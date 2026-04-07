@@ -8,7 +8,6 @@ description: >-
 type: Index
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
   - Animals
   - Pet Adoption
 url: >-
@@ -25,8 +24,7 @@ apis:
       organization data includes fields like adoption process, the areas they
       serve, website URL, and facebook URL to name just a few.
     humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
-    tags:
-      - API
+    tags: []
     properties:
       - type: Documentation
         url: https://rescuegroups.org/services/adoptable-pet-data-api/
