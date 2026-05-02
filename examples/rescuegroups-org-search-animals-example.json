@@ -1,0 +1,68 @@
+{
+  "title": "Search Adoptable Animals by Location and Species",
+  "description": "Example request to search for adoptable dogs within 25 miles of ZIP code 90210",
+  "request": {
+    "method": "POST",
+    "url": "https://api.rescuegroups.org/v5/public/animals/search/available?page=1&limit=25",
+    "headers": {
+      "Content-Type": "application/vnd.api+json",
+      "Authorization": "{{apikey}}"
+    },
+    "body": {
+      "data": {
+        "filters": [
+          {
+            "fieldName": "species.singular",
+            "operation": "equal",
+            "criteria": "Dog"
+          }
+        ],
+        "geodistance": {
+          "postalcode": "90210",
+          "miles": 25
+        }
+      }
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "meta": {
+        "count": 87,
+        "pageCount": 4,
+        "transactionId": "abc123def456"
+      },
+      "data": [
+        {
+          "id": "12345",
+          "type": "animals",
+          "attributes": {
+            "name": "Buddy",
+            "sex": "Male",
+            "ageGroup": "Young",
+            "sizeGroup": "Medium",
+            "isAdoptionPending": false,
+            "isAltered": true,
+            "pictureCount": 3,
+            "videoCount": 0,
+            "descriptionText": "Buddy is a friendly 2-year-old Lab mix looking for his forever home.",
+            "locationCitystate": "Beverly Hills, CA",
+            "locationDistance": 4.2,
+            "url": "https://rescuegroups.org/animals/12345"
+          },
+          "relationships": {
+            "species": {
+              "data": { "type": "species", "id": "1" }
+            },
+            "breeds": {
+              "data": [{ "type": "breeds", "id": "25" }]
+            },
+            "orgs": {
+              "data": { "type": "orgs", "id": "678" }
+            }
+          }
+        }
+      ]
+    }
+  }
+}

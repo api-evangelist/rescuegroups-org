@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/rescuegroups-org/json-schema/rescuegroups-org-organization-schema.json",
+  "title": "RescueGroups.org Organization",
+  "description": "JSON Schema for a RescueGroups.org rescue organization record.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique organization identifier."
+    },
+    "type": {
+      "type": "string",
+      "const": "orgs",
+      "description": "JSON API resource type."
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Organization name."
+        },
+        "type": {
+          "type": "string",
+          "description": "Organization type (rescue, shelter, etc.)."
+        },
+        "email": {
+          "type": ["string", "null"],
+          "format": "email",
+          "description": "Contact email address."
+        },
+        "phone": {
+          "type": ["string", "null"],
+          "description": "Contact phone number."
+        },
+        "street": {
+          "type": ["string", "null"],
+          "description": "Street address."
+        },
+        "city": {
+          "type": ["string", "null"],
+          "description": "City."
+        },
+        "state": {
+          "type": ["string", "null"],
+          "description": "State or province."
+        },
+        "country": {
+          "type": ["string", "null"],
+          "description": "Country."
+        },
+        "postalcode": {
+          "type": ["string", "null"],
+          "description": "Postal code."
+        },
+        "url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Organization website URL."
+        },
+        "adoptionUrl": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Adoption application URL."
+        },
+        "about": {
+          "type": ["string", "null"],
+          "description": "Organization description."
+        },
+        "serveAreas": {
+          "type": ["string", "null"],
+          "description": "Geographic areas the organization serves."
+        },
+        "facebookUrl": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "Facebook page URL."
+        }
+      },
+      "required": ["name"]
+    }
+  },
+  "required": ["id", "type", "attributes"]
+}

@@ -1,0 +1,101 @@
+vocabulary:
+  name: RescueGroups.org API Vocabulary
+  description: Domain vocabulary for the RescueGroups.org adoptable pet data API.
+  version: "1.0"
+  created: "2026-05-02"
+  terms:
+    - term: Animal
+      definition: A pet available for adoption, including dogs, cats, rabbits, birds, and other species managed by rescue organizations.
+      related: ["species", "breed", "rescue"]
+
+    - term: Organization
+      definition: A rescue group, shelter, or animal adoption organization that manages adoptable animals through RescueGroups.org.
+      related: ["rescue", "shelter", "adoption"]
+
+    - term: Species
+      definition: The biological classification of an animal (e.g., Dog, Cat, Rabbit, Bird, Horse).
+      related: ["animal", "breed"]
+
+    - term: Breed
+      definition: A specific breed or mixed breed classification for an animal (e.g., Labrador Retriever, Domestic Shorthair).
+      related: ["animal", "species"]
+
+    - term: AgeGroup
+      definition: A categorical age classification for animals.
+      values:
+        - Baby
+        - Young
+        - Adult
+        - Senior
+      related: ["animal"]
+
+    - term: SizeGroup
+      definition: A categorical size classification for animals.
+      values:
+        - Small
+        - Medium
+        - Large
+        - Extra Large
+      related: ["animal"]
+
+    - term: AdoptionPending
+      definition: Status indicating that an adoption application has been received and is being processed for the animal.
+      related: ["animal", "adoption"]
+
+    - term: Altered
+      definition: Describes an animal that has been spayed (female) or neutered (male).
+      related: ["animal", "veterinary"]
+
+    - term: View
+      definition: A predefined search filter configuration for animal searches.
+      values:
+        - available
+        - adopted
+        - haspic
+        - cats
+        - dogs
+        - rabbits
+      related: ["search", "filter"]
+
+    - term: GeoDistance
+      definition: A geographic proximity search parameter that filters results by distance from a postal code or coordinates.
+      related: ["search", "location"]
+
+    - term: PetList
+      definition: A curated list of animals maintained by a rescue organization, accessible by a unique keystring.
+      related: ["organization", "animal"]
+
+    - term: JSONApi
+      definition: The JSON API specification (jsonapi.org) used as the data interchange format for all API responses.
+      related: ["api", "format"]
+
+    - term: Filter
+      definition: A search constraint applied to an animal or organization query.
+      properties:
+        - fieldName
+        - operation
+        - criteria
+      related: ["search"]
+
+    - term: FilterOperation
+      definition: The comparison type used in a search filter.
+      values:
+        - equal
+        - notequal
+        - lessthan
+        - greaterthan
+        - contains
+        - notcontains
+        - blank
+        - notblank
+        - startswith
+        - endswith
+      related: ["filter", "search"]
+
+    - term: ApiKey
+      definition: A credential issued by RescueGroups.org that grants access to the public API for searching adoptable animals.
+      related: ["authentication", "access"]
+
+    - term: BearerToken
+      definition: A short-lived JWT token obtained via the /tokens endpoint for authenticated write access.
+      related: ["authentication", "access"]

@@ -1,0 +1,99 @@
+rules:
+  rescuegroups-path-prefix:
+    description: All public endpoints must be prefixed with /public/.
+    message: Public endpoints should use the /public/ path prefix.
+    severity: warn
+    given: $.paths[?(!@property.match(/^\/public\//) && !@property.match(/^\/tokens/))]
+    then:
+      function: falsy
+
+  rescuegroups-content-type:
+    description: All RescueGroups.org API operations must use application/vnd.api+json.
+    message: Operations should accept/produce application/vnd.api+json media type.
+    severity: warn
+    given: $.paths[*][*].responses[*].content
+    then:
+      field: application/vnd.api+json
+      function: truthy
+
+  rescuegroups-operation-id:
+    description: All operations must have an operationId.
+    message: Operation is missing operationId.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: operationId
+      function: truthy
+
+  rescuegroups-operation-summary:
+    description: All operations must have a summary.
+    message: Operation is missing a summary.
+    severity: error
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: summary
+      function: truthy
+
+  rescuegroups-operation-tags:
+    description: All operations must have at least one tag.
+    message: Operation is missing tags.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: tags
+      function: truthy
+
+  rescuegroups-path-kebab-case:
+    description: Path segments should use kebab-case.
+    message: Path segment should use kebab-case.
+    severity: warn
+    given: $.paths[*]~
+    then:
+      function: pattern
+      functionOptions:
+        match: '^(\/[a-z][a-z0-9-]*(\{[a-zA-Z_]+\})?)*$'
+
+  rescuegroups-response-400:
+    description: POST and PATCH operations should document 400 responses.
+    message: POST/PATCH operation should have a 400 response.
+    severity: warn
+    given: $.paths[*][post,patch]
+    then:
+      field: responses.400
+      function: truthy
+
+  rescuegroups-response-401:
+    description: All operations should document 401 Unauthorized responses.
+    message: Operation should have a 401 response.
+    severity: warn
+    given: $.paths[*][get,post,put,patch,delete]
+    then:
+      field: responses.401
+      function: truthy
+
+  rescuegroups-jsonapi-response-schema:
+    description: Responses should reference component schemas following JSON API structure.
+    message: Response should reference a schema with data property.
+    severity: info
+    given: $.paths[*][*].responses['200','201'].content['application/vnd.api+json'].schema
+    then:
+      function: truthy
+
+  rescuegroups-pagination-params:
+    description: GET collection endpoints should support page and limit query parameters.
+    message: Collection GET endpoint should document pagination parameters.
+    severity: info
+    given: $.paths[?(!@property.match(/{.*}/) && !@property.match(/search/) && !@property.match(/tokens/))].get
+    then:
+      field: parameters
+      function: truthy
+
+  rescuegroups-tags-title-case:
+    description: All tags must use Title Case.
+    message: Tag name should use Title Case.
+    severity: warn
+    given: $.tags[*].name
+    then:
+      function: pattern
+      functionOptions:
+        match: '^[A-Z][A-Za-z ]*$'

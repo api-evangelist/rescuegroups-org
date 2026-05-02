@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/api-evangelist/rescuegroups-org/json-schema/rescuegroups-org-animal-schema.json",
+  "title": "RescueGroups.org Animal",
+  "description": "JSON Schema for a RescueGroups.org adoptable animal record as returned by the v5 API.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique animal identifier."
+    },
+    "type": {
+      "type": "string",
+      "const": "animals",
+      "description": "JSON API resource type."
+    },
+    "attributes": {
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "description": "Animal name."
+        },
+        "birthDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Animal birth date."
+        },
+        "sex": {
+          "type": "string",
+          "enum": ["Male", "Female", "Unknown"],
+          "description": "Animal sex."
+        },
+        "ageGroup": {
+          "type": "string",
+          "enum": ["Baby", "Young", "Adult", "Senior"],
+          "description": "Age group category."
+        },
+        "sizeGroup": {
+          "type": "string",
+          "enum": ["Small", "Medium", "Large", "Extra Large"],
+          "description": "Size group category."
+        },
+        "isAdoptionPending": {
+          "type": "boolean",
+          "description": "Whether adoption is pending."
+        },
+        "isAltered": {
+          "type": "boolean",
+          "description": "Whether the animal is spayed or neutered."
+        },
+        "pictureCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of pictures available."
+        },
+        "videoCount": {
+          "type": "integer",
+          "minimum": 0,
+          "description": "Number of videos available."
+        },
+        "adoptedDate": {
+          "type": ["string", "null"],
+          "format": "date",
+          "description": "Date the animal was adopted."
+        },
+        "specialNeedsDetails": {
+          "type": ["string", "null"],
+          "description": "Description of any special needs."
+        },
+        "descriptionText": {
+          "type": ["string", "null"],
+          "description": "Plain text description of the animal."
+        },
+        "locationCitystate": {
+          "type": ["string", "null"],
+          "description": "City and state where the animal is located."
+        },
+        "locationState": {
+          "type": ["string", "null"],
+          "description": "State where the animal is located."
+        },
+        "locationDistance": {
+          "type": ["number", "null"],
+          "description": "Distance from search location."
+        },
+        "rescueId": {
+          "type": ["string", "null"],
+          "description": "External rescue ID."
+        },
+        "url": {
+          "type": ["string", "null"],
+          "format": "uri",
+          "description": "URL of the animal profile page."
+        }
+      }
+    },
+    "relationships": {
+      "type": "object",
+      "properties": {
+        "breeds": {
+          "type": "object",
+          "description": "Animal breed relationships."
+        },
+        "colors": {
+          "type": "object",
+          "description": "Animal color relationships."
+        },
+        "patterns": {
+          "type": "object",
+          "description": "Animal pattern relationships."
+        },
+        "species": {
+          "type": "object",
+          "description": "Animal species relationship."
+        },
+        "orgs": {
+          "type": "object",
+          "description": "Rescue organization relationship."
+        },
+        "pictures": {
+          "type": "object",
+          "description": "Animal pictures relationship."
+        }
+      }
+    }
+  },
+  "required": ["id", "type", "attributes"]
+}

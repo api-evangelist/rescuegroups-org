@@ -1,0 +1,31 @@
+{
+  "name": "RescueGroups.org Animal",
+  "description": "JSON structure for a RescueGroups.org adoptable animal record.",
+  "fields": [
+    { "name": "id", "type": "string", "description": "Unique animal identifier." },
+    { "name": "type", "type": "string", "const": "animals", "description": "JSON API resource type." },
+    { "name": "attributes.name", "type": "string", "description": "Animal name." },
+    { "name": "attributes.birthDate", "type": "date", "description": "Animal birth date." },
+    { "name": "attributes.sex", "type": "string", "enum": ["Male", "Female", "Unknown"], "description": "Animal sex." },
+    { "name": "attributes.ageGroup", "type": "string", "enum": ["Baby", "Young", "Adult", "Senior"], "description": "Age group category." },
+    { "name": "attributes.sizeGroup", "type": "string", "enum": ["Small", "Medium", "Large", "Extra Large"], "description": "Size category." },
+    { "name": "attributes.isAdoptionPending", "type": "boolean", "description": "Whether adoption is pending." },
+    { "name": "attributes.isAltered", "type": "boolean", "description": "Whether spayed or neutered." },
+    { "name": "attributes.pictureCount", "type": "integer", "description": "Number of pictures." },
+    { "name": "attributes.videoCount", "type": "integer", "description": "Number of videos." },
+    { "name": "attributes.adoptedDate", "type": "date", "description": "Adoption date." },
+    { "name": "attributes.specialNeedsDetails", "type": "string", "description": "Special needs description." },
+    { "name": "attributes.descriptionText", "type": "string", "description": "Animal description." },
+    { "name": "attributes.locationCitystate", "type": "string", "description": "City and state location." },
+    { "name": "attributes.locationState", "type": "string", "description": "State location." },
+    { "name": "attributes.locationDistance", "type": "number", "description": "Distance from search origin." },
+    { "name": "attributes.rescueId", "type": "string", "description": "External rescue ID." },
+    { "name": "attributes.url", "type": "uri", "description": "Animal profile URL." },
+    { "name": "relationships.breeds", "type": "object", "description": "Breed relationships." },
+    { "name": "relationships.colors", "type": "object", "description": "Color relationships." },
+    { "name": "relationships.patterns", "type": "object", "description": "Pattern relationships." },
+    { "name": "relationships.species", "type": "object", "description": "Species relationship." },
+    { "name": "relationships.orgs", "type": "object", "description": "Organization relationship." },
+    { "name": "relationships.pictures", "type": "object", "description": "Pictures relationship." }
+  ]
+}
