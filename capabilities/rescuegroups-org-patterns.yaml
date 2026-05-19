@@ -1,0 +1,70 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RescueGroups.org API — Patterns
+  description: 'RescueGroups.org API — Patterns. 1 operations. Lead operation: List Animal Patterns. Self-contained Naftiko
+    capability covering one Rescuegroups Org business surface.'
+  tags:
+  - Rescuegroups Org
+  - Patterns
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESCUEGROUPS_ORG_API_KEY: RESCUEGROUPS_ORG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rescuegroups-org-patterns
+    baseUri: https://api.rescuegroups.org/v5
+    description: RescueGroups.org API — Patterns business capability. Self-contained, no shared references.
+    resources:
+    - name: public-animals-patterns
+      path: /public/animals/patterns
+      operations:
+      - name: listanimalpatterns
+        method: GET
+        description: List Animal Patterns
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    authentication:
+      type: bearer
+      token: '{{env.RESCUEGROUPS_ORG_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rescuegroups-org-patterns-rest
+    port: 8080
+    description: REST adapter for RescueGroups.org API — Patterns. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/public/animals/patterns
+      name: public-animals-patterns
+      description: REST surface for public-animals-patterns.
+      operations:
+      - method: GET
+        name: listanimalpatterns
+        description: List Animal Patterns
+        call: rescuegroups-org-patterns.listanimalpatterns
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rescuegroups-org-patterns-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RescueGroups.org API — Patterns. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-animal-patterns
+      description: List Animal Patterns
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rescuegroups-org-patterns.listanimalpatterns
+      outputParameters:
+      - type: object
+        mapping: $.

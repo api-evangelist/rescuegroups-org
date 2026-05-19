@@ -1,0 +1,161 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: RescueGroups.org API — Animals
+  description: 'RescueGroups.org API — Animals. 3 operations. Lead operation: List Public Animals. Self-contained Naftiko
+    capability covering one Rescuegroups Org business surface.'
+  tags:
+  - Rescuegroups Org
+  - Animals
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    RESCUEGROUPS_ORG_API_KEY: RESCUEGROUPS_ORG_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: rescuegroups-org-animals
+    baseUri: https://api.rescuegroups.org/v5
+    description: RescueGroups.org API — Animals business capability. Self-contained, no shared references.
+    resources:
+    - name: public-animals
+      path: /public/animals
+      operations:
+      - name: listpublicanimals
+        method: GET
+        description: List Public Animals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: public-animals-search-view_name
+      path: /public/animals/search/{view_name}
+      operations:
+      - name: searchpublicanimals
+        method: POST
+        description: Search Public Animals
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: view_name
+          in: path
+          type: string
+          description: Predefined view name (e.g., available, adopted, haspic, cats, dogs).
+          required: true
+        - name: body
+          in: body
+          type: object
+          description: Request body (JSON).
+          required: false
+    - name: public-animals-animal_id
+      path: /public/animals/{animal_id}
+      operations:
+      - name: getpublicanimal
+        method: GET
+        description: Get Public Animal
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: animal_id
+          in: path
+          type: string
+          description: The unique animal identifier.
+          required: true
+    authentication:
+      type: bearer
+      token: '{{env.RESCUEGROUPS_ORG_API_KEY}}'
+  exposes:
+  - type: rest
+    namespace: rescuegroups-org-animals-rest
+    port: 8080
+    description: REST adapter for RescueGroups.org API — Animals. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/public/animals
+      name: public-animals
+      description: REST surface for public-animals.
+      operations:
+      - method: GET
+        name: listpublicanimals
+        description: List Public Animals
+        call: rescuegroups-org-animals.listpublicanimals
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/animals/search/{view-name}
+      name: public-animals-search-view-name
+      description: REST surface for public-animals-search-view_name.
+      operations:
+      - method: POST
+        name: searchpublicanimals
+        description: Search Public Animals
+        call: rescuegroups-org-animals.searchpublicanimals
+        with:
+          view_name: rest.view_name
+          body: rest.body
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/public/animals/{animal-id}
+      name: public-animals-animal-id
+      description: REST surface for public-animals-animal_id.
+      operations:
+      - method: GET
+        name: getpublicanimal
+        description: Get Public Animal
+        call: rescuegroups-org-animals.getpublicanimal
+        with:
+          animal_id: rest.animal_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: rescuegroups-org-animals-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for RescueGroups.org API — Animals. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: list-public-animals
+      description: List Public Animals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rescuegroups-org-animals.listpublicanimals
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: search-public-animals
+      description: Search Public Animals
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: false
+      call: rescuegroups-org-animals.searchpublicanimals
+      with:
+        view_name: tools.view_name
+        body: tools.body
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-public-animal
+      description: Get Public Animal
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: rescuegroups-org-animals.getpublicanimal
+      with:
+        animal_id: tools.animal_id
+      outputParameters:
+      - type: object
+        mapping: $.
