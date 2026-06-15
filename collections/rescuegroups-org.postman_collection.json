@@ -1,0 +1,2568 @@
+{
+  "item": [
+    {
+      "id": "15a8073b-e414-4e43-975e-5208452392fb",
+      "name": "Animals",
+      "description": {
+        "content": "Search and retrieve adoptable animal records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "a1ec1b30-3f61-4ce9-bc0f-68d08b62ed51",
+          "name": "List Public Animals",
+          "request": {
+            "name": "List Public Animals",
+            "description": {
+              "content": "Retrieve a paginated list of public adoptable animals.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of records per page (max 250)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field with optional +/- prefix for direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Specific fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Specific fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "676b69f4-01b2-4bd3-9587-2ed2974f78e2",
+              "name": "A paginated list of animals.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 6009,\n    \"pageCount\": 4170,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"animals\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"birthDate\": \"2025-04-02\",\n        \"sex\": \"Male\",\n        \"ageGroup\": \"Baby\",\n        \"sizeGroup\": \"Extra Large\",\n        \"isAdoptionPending\": false,\n        \"isAltered\": false,\n        \"pictureCount\": 7536,\n        \"videoCount\": 3467,\n        \"adoptedDate\": \"1951-03-15\",\n        \"specialNeedsDetails\": \"string\",\n        \"descriptionText\": \"string\",\n        \"locationCitystate\": \"string\",\n        \"locationState\": \"string\",\n        \"locationDistance\": 6434.27679546619,\n        \"rescueId\": \"string\",\n        \"url\": \"http://eoY.orkfHWKrFrHBv3sbq0aRURFL3AEB64f60DHGACXr5xPKdJg28OLwm.vMwf8cJ\"\n      },\n      \"relationships\": {\n        \"breeds\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"colors\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"patterns\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"species\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"orgs\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"pictures\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"animals\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"birthDate\": \"1973-12-12\",\n        \"sex\": \"Unknown\",\n        \"ageGroup\": \"Adult\",\n        \"sizeGroup\": \"Medium\",\n        \"isAdoptionPending\": false,\n        \"isAltered\": false,\n        \"pictureCount\": 7497,\n        \"videoCount\": 7236,\n        \"adoptedDate\": \"1989-09-20\",\n        \"specialNeedsDetails\": \"string\",\n        \"descriptionText\": \"string\",\n        \"locationCitystate\": \"string\",\n        \"locationState\": \"string\",\n        \"locationDistance\": 568.4904778703803,\n        \"rescueId\": \"string\",\n        \"url\": \"http://kYUqvOrojByTSyLlDO.mqxlCKGq3Fs31LK4XJKAzrleiJXTw7Ip0SUlSSmhMGByzKT,uLMv4JFhv4o2uUMMLzz6u1metrM2z9\"\n      },\n      \"relationships\": {\n        \"breeds\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"colors\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"patterns\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"species\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"orgs\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"pictures\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "59091300-547b-4f5a-8dc5-f10510b345c4",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "4528ebf0-c18a-49c7-9938-242b989cd36a",
+              "name": "Rate limit exceeded.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "df9c4940-b7e0-4d2b-b6e8-62ccb4fcc911",
+          "name": "Get Public Animal",
+          "request": {
+            "name": "Get Public Animal",
+            "description": {
+              "content": "Retrieve a single public adoptable animal by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                ":animal_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "animal_id",
+                  "description": "(Required) The unique animal identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3645e879-f863-43ef-92fd-c4a974616481",
+              "name": "A single animal record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    ":animal_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "animal_id",
+                      "description": "(Required) The unique animal identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"animals\",\n    \"attributes\": {\n      \"name\": \"string\",\n      \"birthDate\": \"2018-07-10\",\n      \"sex\": \"Female\",\n      \"ageGroup\": \"Adult\",\n      \"sizeGroup\": \"Extra Large\",\n      \"isAdoptionPending\": true,\n      \"isAltered\": true,\n      \"pictureCount\": 9014,\n      \"videoCount\": 2948,\n      \"adoptedDate\": \"1948-09-17\",\n      \"specialNeedsDetails\": \"string\",\n      \"descriptionText\": \"string\",\n      \"locationCitystate\": \"string\",\n      \"locationState\": \"string\",\n      \"locationDistance\": 3925.287964793909,\n      \"rescueId\": \"string\",\n      \"url\": \"http://cNOgWiHq.yjblR8P..9zCgqJzEX,PMeyM7ULtEfA+mbDRer\"\n    },\n    \"relationships\": {\n      \"breeds\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      },\n      \"colors\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      },\n      \"patterns\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      },\n      \"species\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      },\n      \"orgs\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      },\n      \"pictures\": {\n        \"data\": {\n          \"type\": \"string\",\n          \"id\": \"string\"\n        }\n      }\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "709054a3-4531-416e-a590-5623c0a01eb1",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    ":animal_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "animal_id",
+                      "description": "(Required) The unique animal identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8c8b0176-6200-4a24-949f-420e15c004b9",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    ":animal_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "animal_id",
+                      "description": "(Required) The unique animal identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "b092c939-6ba0-48bc-b67b-ffc24a32ba55",
+          "name": "Search Public Animals",
+          "request": {
+            "name": "Search Public Animals",
+            "description": {
+              "content": "Search public adoptable animals using filters, views, and geodistance. Predefined view names include: available, adopted, haspic, cats, dogs, rabbits, and species-specific variants.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                "search",
+                ":view_name"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of records per page (max 250)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field with optional +/- prefix for direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "view_name",
+                  "description": "(Required) Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"filters\": [\n      {\n        \"fieldName\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"criteria\": \"<string>\"\n      },\n      {\n        \"fieldName\": \"<string>\",\n        \"operation\": \"<string>\",\n        \"criteria\": \"<string>\"\n      }\n    ],\n    \"filterProcessing\": \"<string>\",\n    \"geodistance\": {\n      \"postalcode\": \"<string>\",\n      \"lat\": \"<number>\",\n      \"lon\": \"<number>\",\n      \"miles\": \"<integer>\",\n      \"kilometers\": \"<integer>\"\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "7792570b-71de-4f87-9262-c1b7bd957e07",
+              "name": "Matching animals.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "search",
+                    ":view_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"filters\": [\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notblank\",\n        \"criteria\": \"string\"\n      },\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notequal\",\n        \"criteria\": \"string\"\n      }\n    ],\n    \"filterProcessing\": \"<string>\",\n    \"geodistance\": {\n      \"postalcode\": \"string\",\n      \"lat\": 5443.442321440176,\n      \"lon\": 646.0691895106052,\n      \"miles\": 8964,\n      \"kilometers\": 1818\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 6009,\n    \"pageCount\": 4170,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"animals\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"birthDate\": \"2025-04-02\",\n        \"sex\": \"Male\",\n        \"ageGroup\": \"Baby\",\n        \"sizeGroup\": \"Extra Large\",\n        \"isAdoptionPending\": false,\n        \"isAltered\": false,\n        \"pictureCount\": 7536,\n        \"videoCount\": 3467,\n        \"adoptedDate\": \"1951-03-15\",\n        \"specialNeedsDetails\": \"string\",\n        \"descriptionText\": \"string\",\n        \"locationCitystate\": \"string\",\n        \"locationState\": \"string\",\n        \"locationDistance\": 6434.27679546619,\n        \"rescueId\": \"string\",\n        \"url\": \"http://eoY.orkfHWKrFrHBv3sbq0aRURFL3AEB64f60DHGACXr5xPKdJg28OLwm.vMwf8cJ\"\n      },\n      \"relationships\": {\n        \"breeds\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"colors\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"patterns\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"species\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"orgs\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"pictures\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        }\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"animals\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"birthDate\": \"1973-12-12\",\n        \"sex\": \"Unknown\",\n        \"ageGroup\": \"Adult\",\n        \"sizeGroup\": \"Medium\",\n        \"isAdoptionPending\": false,\n        \"isAltered\": false,\n        \"pictureCount\": 7497,\n        \"videoCount\": 7236,\n        \"adoptedDate\": \"1989-09-20\",\n        \"specialNeedsDetails\": \"string\",\n        \"descriptionText\": \"string\",\n        \"locationCitystate\": \"string\",\n        \"locationState\": \"string\",\n        \"locationDistance\": 568.4904778703803,\n        \"rescueId\": \"string\",\n        \"url\": \"http://kYUqvOrojByTSyLlDO.mqxlCKGq3Fs31LK4XJKAzrleiJXTw7Ip0SUlSSmhMGByzKT,uLMv4JFhv4o2uUMMLzz6u1metrM2z9\"\n      },\n      \"relationships\": {\n        \"breeds\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"colors\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"patterns\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"species\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"orgs\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        },\n        \"pictures\": {\n          \"data\": {\n            \"type\": \"string\",\n            \"id\": \"string\"\n          }\n        }\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b9232574-aedc-44c7-8be3-4021bfa94c3e",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "search",
+                    ":view_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"filters\": [\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notblank\",\n        \"criteria\": \"string\"\n      },\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notequal\",\n        \"criteria\": \"string\"\n      }\n    ],\n    \"filterProcessing\": \"<string>\",\n    \"geodistance\": {\n      \"postalcode\": \"string\",\n      \"lat\": 5443.442321440176,\n      \"lon\": 646.0691895106052,\n      \"miles\": 8964,\n      \"kilometers\": 1818\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "8df67656-f081-45a1-aa30-7012b23b6ce9",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "search",
+                    ":view_name"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "view_name",
+                      "description": "(Required) Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"filters\": [\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notblank\",\n        \"criteria\": \"string\"\n      },\n      {\n        \"fieldName\": \"string\",\n        \"operation\": \"notequal\",\n        \"criteria\": \"string\"\n      }\n    ],\n    \"filterProcessing\": \"<string>\",\n    \"geodistance\": {\n      \"postalcode\": \"string\",\n      \"lat\": 5443.442321440176,\n      \"lon\": 646.0691895106052,\n      \"miles\": 8964,\n      \"kilometers\": 1818\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "5f75ce19-3387-4fc2-a548-432451005d50",
+      "name": "Organizations",
+      "description": {
+        "content": "Search and retrieve rescue organization records.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "422c8f20-925a-40cf-9b78-8f2614135bec",
+          "name": "List Public Organizations",
+          "request": {
+            "name": "List Public Organizations",
+            "description": {
+              "content": "Retrieve a paginated list of public rescue organizations.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "orgs"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of records per page (max 250)."
+                },
+                {
+                  "disabled": false,
+                  "key": "sort",
+                  "value": "<string>",
+                  "description": "Sort field with optional +/- prefix for direction."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Specific fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "fields[]",
+                  "value": "<string>",
+                  "description": "Specific fields to return."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                },
+                {
+                  "disabled": false,
+                  "key": "include[]",
+                  "value": "<string>",
+                  "description": "Related entities to include in the response."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "1e3f615b-7ac2-413d-b279-2309a6a9a9c3",
+              "name": "A paginated list of organizations.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "orgs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 1528,\n    \"pageCount\": 6057,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"orgs\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"email\": \"qVWlbub@UezNGOeIWWfVvRuJV.iqcs\",\n        \"phone\": \"string\",\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"country\": \"string\",\n        \"postalcode\": \"string\",\n        \"url\": \"http://tdFlbDmYgGnuWFZrfNldnTbdVUosZoRE.wyv8+0Bom8XCO6aAgv+TGfXLxq\",\n        \"adoptionUrl\": \"https://Ecs.hrsuRNjeUR4IykKtJSqvku4atpOze61-bVyAolKrWUSGlV2zKZwCFKga5B0ihg\",\n        \"about\": \"string\",\n        \"serveAreas\": \"string\",\n        \"facebookUrl\": \"http://YFQsvWdLsEZDgWyIHYZLzwrRh.vbvK17eW0dZ,hJzEULsXinC5akaDi1Vcy8kieeZZXCZwZAJpvi2Y\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"orgs\",\n      \"attributes\": {\n        \"name\": \"string\",\n        \"type\": \"string\",\n        \"email\": \"4fZw@SWUTMdCWgjbEJwyMcJBKNwFWmncVBcRTk.aal\",\n        \"phone\": \"string\",\n        \"street\": \"string\",\n        \"city\": \"string\",\n        \"state\": \"string\",\n        \"country\": \"string\",\n        \"postalcode\": \"string\",\n        \"url\": \"https://kdlxTEOIGaIHfaRohymeceaupoyLQlqYx.heqjQoWS-rlw1w+gRwtFJHD981mmrqRuqXwAy1GmhwZUCT5DL9gApKihUZ604qMn71zIjeyKWSYWo5Dav\",\n        \"adoptionUrl\": \"http://yqBfhuPlWljDqgCt.soe-JlRYTSUa4LApfd-4O,YVeYTRrwWP+EoXSYMfpPeAYo.8vyxU-HQGKfSzS3tHLYvjin2EAD3lVlr-\",\n        \"about\": \"string\",\n        \"serveAreas\": \"string\",\n        \"facebookUrl\": \"http://DmmhUajHXS.vgyry4Al0u9zCs7bruKYTVtjtDbCStKT9Q.AvM\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "170fa221-0094-48fc-ba06-461c1a3bf379",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "orgs"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    },
+                    {
+                      "key": "sort",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "fields[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "include[]",
+                      "value": "<string>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "0a9983eb-a8d9-47bf-b5cc-37af7de62e12",
+          "name": "Get Public Organization",
+          "request": {
+            "name": "Get Public Organization",
+            "description": {
+              "content": "Retrieve a single public rescue organization by ID.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "orgs",
+                ":org_id"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "org_id",
+                  "description": "(Required) The unique organization identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "69a34a27-419e-40b6-b448-82585967af1e",
+              "name": "A single organization record.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "orgs",
+                    ":org_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The unique organization identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"orgs\",\n    \"attributes\": {\n      \"name\": \"string\",\n      \"type\": \"string\",\n      \"email\": \"Ni3ZN@CuPSZxDQlDYBeETdUByd.qd\",\n      \"phone\": \"string\",\n      \"street\": \"string\",\n      \"city\": \"string\",\n      \"state\": \"string\",\n      \"country\": \"string\",\n      \"postalcode\": \"string\",\n      \"url\": \"https://qllbB.tradg6T7H9lfhM,gu6Fvo5itSHnVjwwGNM24N8vV,7tYClqFfqN19Jn\",\n      \"adoptionUrl\": \"http://BtyWqZgPNElGb.oxEx5YZ-LbT8vmmuPEFp2ECOEsJYo0\",\n      \"about\": \"string\",\n      \"serveAreas\": \"string\",\n      \"facebookUrl\": \"https://MrTYDwPZAtnYl.mkwVP24vSnaoBb+xIqVe0ZyvW,2vU21eDNQPdU308M2azSBVuc\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "9436b947-ac44-4bc2-a59c-fba6153a8561",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "orgs",
+                    ":org_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The unique organization identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c9f93add-1861-4c81-bfbb-7e9f339c6ae8",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "orgs",
+                    ":org_id"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "org_id",
+                      "description": "(Required) The unique organization identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "d6186b90-3ccf-486e-ab56-0ee5556ab2be",
+      "name": "Breeds",
+      "description": {
+        "content": "Retrieve animal breed reference data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e950f15b-e812-46ed-b4c6-93b8449ab9ac",
+          "name": "List Animal Breeds",
+          "request": {
+            "name": "List Animal Breeds",
+            "description": {
+              "content": "Retrieve all animal breed reference values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                "breeds"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "page",
+                  "value": "1",
+                  "description": "Page number for paginated results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "25",
+                  "description": "Number of records per page (max 250)."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "bf1bcc03-0aec-4762-89c2-5165f34d000f",
+              "name": "A list of animal breeds.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "breeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 7995,\n    \"pageCount\": 6562,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "742997d5-aea1-4855-a4d8-cae07fda385b",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "breeds"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "page",
+                      "value": "1"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "25"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "95d0bbaa-12e9-4ce6-998e-5975aa9b17d6",
+      "name": "Species",
+      "description": {
+        "content": "Retrieve animal species reference data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "72121016-c13f-4dfe-8312-d24f5cb21a96",
+          "name": "List Animal Species",
+          "request": {
+            "name": "List Animal Species",
+            "description": {
+              "content": "Retrieve all animal species reference values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                "species"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8883f894-3f15-492b-802e-de789a9a8128",
+              "name": "A list of animal species.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "species"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"singular\": \"string\",\n        \"plural\": \"string\",\n        \"youngSingular\": \"string\",\n        \"youngPlural\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"singular\": \"string\",\n        \"plural\": \"string\",\n        \"youngSingular\": \"string\",\n        \"youngPlural\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1d17aba8-74c8-4c8d-a211-89858ee20130",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "species"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "509d6203-1cdc-4048-bb6e-f48907299728",
+      "name": "Colors",
+      "description": {
+        "content": "Retrieve animal color reference data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "cb51f1a9-ba82-4fc8-87bd-900125b941ca",
+          "name": "List Animal Colors",
+          "request": {
+            "name": "List Animal Colors",
+            "description": {
+              "content": "Retrieve all animal color reference values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                "colors"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "357a7c1e-7816-414a-a914-1bbdc23813bd",
+              "name": "A list of animal colors.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "colors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 7995,\n    \"pageCount\": 6562,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b8d6b5cd-741e-4974-851e-9c95144affe0",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "colors"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "33389577-9424-4b05-b08c-0455b663b464",
+      "name": "Patterns",
+      "description": {
+        "content": "Retrieve animal pattern reference data.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e7f43f0c-3430-4d93-8b9e-0b1d889542eb",
+          "name": "List Animal Patterns",
+          "request": {
+            "name": "List Animal Patterns",
+            "description": {
+              "content": "Retrieve all animal pattern reference values.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "animals",
+                "patterns"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "0aed2f41-e8d8-465f-aada-b8e3570dada3",
+              "name": "A list of animal patterns.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "patterns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"meta\": {\n    \"count\": 7995,\n    \"pageCount\": 6562,\n    \"transactionId\": \"string\"\n  },\n  \"data\": [\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    },\n    {\n      \"id\": \"string\",\n      \"type\": \"string\",\n      \"attributes\": {\n        \"name\": \"string\"\n      }\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "32ed2507-84e9-4383-bc39-3c40c0f8b427",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "animals",
+                    "patterns"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "9c40e839-4af7-4c45-a989-ad29a408bfb6",
+      "name": "Pet Lists",
+      "description": {
+        "content": "Manage organization pet lists.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "e1f79d39-ad2a-4cf1-90de-72df596edfec",
+          "name": "Get Pet List",
+          "request": {
+            "name": "Get Pet List",
+            "description": {
+              "content": "Retrieve a pet list by its keystring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "petlists",
+                ":keystring"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keystring",
+                  "description": "(Required) The pet list keystring identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "fceb7261-02c3-4d03-8957-334d46b194cd",
+              "name": "A pet list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "petlists",
+                    ":keystring"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keystring",
+                      "description": "(Required) The pet list keystring identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"keystring\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a63badbe-1ce5-4f04-b719-69d1b8087c4f",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "petlists",
+                    ":keystring"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keystring",
+                      "description": "(Required) The pet list keystring identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1a8ceae9-b82f-483b-b4e7-f3a777486a6d",
+              "name": "Resource not found.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "petlists",
+                    ":keystring"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keystring",
+                      "description": "(Required) The pet list keystring identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "4d9ab71d-0375-4192-a7fa-2204b3174d2d",
+          "name": "Update Pet List",
+          "request": {
+            "name": "Update Pet List",
+            "description": {
+              "content": "Update a pet list by its keystring.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "public",
+                "petlists",
+                ":keystring"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "keystring",
+                  "description": "(Required) The pet list keystring identifier."
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "PUT",
+            "auth": {
+              "type": "bearer",
+              "bearer": [
+                {
+                  "key": "token",
+                  "value": "{{bearerToken}}"
+                }
+              ]
+            },
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"key_0\": 2467.5998543207957,\n      \"key_1\": 3046.9173438530506\n    }\n  }\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "ba98d695-1d61-4171-8599-dd708d44d6a5",
+              "name": "Updated pet list.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "petlists",
+                    ":keystring"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keystring",
+                      "description": "(Required) The pet list keystring identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"key_0\": 7276,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"type\": \"string\",\n    \"attributes\": {\n      \"keystring\": \"string\",\n      \"name\": \"string\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "a9018aa1-fab7-4bd3-a171-d9b5cacf713d",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "public",
+                    "petlists",
+                    ":keystring"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "keystring",
+                      "description": "(Required) The pet list keystring identifier."
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: bearer",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "Bearer <token>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "PUT",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"data\": {\n    \"type\": \"<string>\",\n    \"id\": \"<string>\",\n    \"attributes\": {\n      \"key_0\": 7276,\n      \"key_1\": \"string\"\n    }\n  }\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    },
+    {
+      "id": "20545b95-8797-43d2-b5df-de6e1ed04b19",
+      "name": "Authentication",
+      "description": {
+        "content": "Obtain bearer tokens for authenticated access.",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "100e38d9-9411-41f1-841d-49b02c8d79f4",
+          "name": "Create Authentication Token",
+          "request": {
+            "name": "Create Authentication Token",
+            "description": {
+              "content": "Obtain a bearer token for authenticated (private data) access.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "tokens"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/vnd.api+json"
+              },
+              {
+                "key": "Accept",
+                "value": "application/vnd.api+json"
+              }
+            ],
+            "method": "POST",
+            "auth": null,
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+              "options": {
+                "raw": {
+                  "language": "json"
+                }
+              }
+            }
+          },
+          "response": [
+            {
+              "id": "648e93b7-393a-4f8b-abd2-4607739875d0",
+              "name": "Token created successfully.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Created",
+              "code": 201,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"data\": {\n    \"id\": \"string\",\n    \"attributes\": {\n      \"token\": \"string\",\n      \"expiration\": \"2022-08-04T17:19:48.479Z\"\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "1f1d6226-06f9-4d67-adf6-526816040856",
+              "name": "Invalid request parameters.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Bad Request",
+              "code": 400,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "99b3d6fd-ce1a-40a9-a31c-f770c68efdf0",
+              "name": "Missing or invalid authorization.",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "tokens"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "Authorization",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/vnd.api+json"
+                  }
+                ],
+                "method": "POST",
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\n  \"username\": \"<string>\",\n  \"password\": \"<string>\"\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                }
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/vnd.api+json"
+                }
+              ],
+              "body": "{\n  \"errors\": [\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    },\n    {\n      \"status\": \"string\",\n      \"title\": \"string\",\n      \"detail\": \"string\"\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.rescuegroups.org/v5",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "Authorization"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3cfe4047-5f15-4823-b37e-e6d92f340f36",
+    "name": "RescueGroups.org API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.\n\nContact Support:\n Name: RescueGroups.org Developer Community",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,378 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RescueGroups.org API",
+    "version": "5.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Animals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Public Animals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field with optional +/- prefix for direction."
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Specific fields to return."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of public adoptable animals."
+        },
+        {
+          "info": {
+            "name": "Get Public Animal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/:animal_id",
+            "params": [
+              {
+                "name": "animal_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique animal identifier."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a single public adoptable animal by ID."
+        },
+        {
+          "info": {
+            "name": "Search Public Animals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rescuegroups.org/v5/public/animals/search/:view_name",
+            "params": [
+              {
+                "name": "view_name",
+                "value": "",
+                "type": "path",
+                "description": "Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field with optional +/- prefix for direction."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search public adoptable animals using filters, views, and geodistance. Predefined view names include: available, adopted, haspic, cats, dogs, rabbits, and species-specific variants."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Organizations",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Public Organizations",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/orgs",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field with optional +/- prefix for direction."
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Specific fields to return."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of public rescue organizations."
+        },
+        {
+          "info": {
+            "name": "Get Public Organization",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/orgs/:org_id",
+            "params": [
+              {
+                "name": "org_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique organization identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a single public rescue organization by ID."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Breeds",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Animal Breeds",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/breeds",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              }
+            ]
+          },
+          "docs": "Retrieve all animal breed reference values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Species",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Animal Species",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/species"
+          },
+          "docs": "Retrieve all animal species reference values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Colors",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Animal Colors",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/colors"
+          },
+          "docs": "Retrieve all animal color reference values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Patterns",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Animal Patterns",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/patterns"
+          },
+          "docs": "Retrieve all animal pattern reference values."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Pet Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pet List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/petlists/:keystring",
+            "params": [
+              {
+                "name": "keystring",
+                "value": "",
+                "type": "path",
+                "description": "The pet list keystring identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a pet list by its keystring."
+        },
+        {
+          "info": {
+            "name": "Update Pet List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.rescuegroups.org/v5/public/petlists/:keystring",
+            "params": [
+              {
+                "name": "keystring",
+                "value": "",
+                "type": "path",
+                "description": "The pet list keystring identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a pet list by its keystring."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Authentication",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Create Authentication Token",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rescuegroups.org/v5/tokens",
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Obtain a bearer token for authenticated (private data) access."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
