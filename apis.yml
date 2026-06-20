@@ -6,7 +6,7 @@ description: >-
   public read-only access via API key and authenticated write access via bearer token, enabling rescue organizations to
   manage and share pet adoption data in real time.
 type: Index
-image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
 tags:
   - Animals
   - Pet Adoption
