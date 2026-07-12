@@ -1,0 +1,26 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: rescuegroups.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 22 23:59:59 2026 GMT
+  hsts: true
+  hsts_max_age: 15768000
+- host: api.rescuegroups.org
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Nov 22 23:59:59 2026 GMT
+  hsts: null
+- host: dev1-api.rescuegroups.org
+  https: false
+domains:
+- domain: rescuegroups.org
+  dnssec: false
+  caa:
+  - 0 issue "letsencrypt.org"
+  - 0 issue "comodoca.com"
+  spf: true
+  dmarc: true
+  dmarc_policy: none

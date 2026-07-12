@@ -1,0 +1,23 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/rescuegroups-org-openapi.yml
+summary:
+  types:
+  - apiKey
+  - http
+  api_key_in:
+  - header
+schemes:
+- name: apiKeyAuth
+  type: apiKey
+  in: header
+  parameter: Authorization
+  description: API key authorization for public data access.
+  sources:
+  - openapi/rescuegroups-org-openapi.yml
+- name: bearerAuth
+  type: http
+  scheme: bearer
+  description: Bearer token for private/authenticated data access.
+  sources:
+  - openapi/rescuegroups-org-openapi.yml

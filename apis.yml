@@ -64,6 +64,10 @@ apis:
       - FN: RescueGroups.org Developer Community
         url: https://groups.google.com/a/rescuegroups.org/g/apidev
 common:
+  - type: DomainSecurity
+    url: security/rescuegroups-org-domain-security.yml
+  - type: Authentication
+    url: authentication/rescuegroups-org-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/rescuegroups-org
   - type: Website
@@ -78,6 +82,8 @@ common:
     url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
   - type: About
     url: https://rescuegroups.org/about/
+  - type: Blog
+    url: https://rescuegroups.org/feed/
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com
