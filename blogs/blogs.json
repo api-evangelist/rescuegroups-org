@@ -1,0 +1,21 @@
+{
+  "repo": "rescuegroups-org",
+  "feeds": [
+    {
+      "source": "https://rescuegroups.org/feed/",
+      "feed_url": "https://rescuegroups.org/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
+    },
+    {
+      "source": "https://rescuegroups.org/about/",
+      "feed_url": "https://rescuegroups.org/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "discovered"
+    }
+  ],
+  "fetched": "2026-07-11T11:50:51Z",
+  "post_count": 22
+}
