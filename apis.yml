@@ -64,6 +64,8 @@ apis:
       - FN: RescueGroups.org Developer Community
         url: https://groups.google.com/a/rescuegroups.org/g/apidev
 common:
+  - type: AgenticAccess
+    url: agentic-access/rescuegroups-org-agentic-access.yml
   - type: DomainSecurity
     url: security/rescuegroups-org-domain-security.yml
   - type: Authentication
