@@ -1,0 +1,125 @@
+openapi: 3.1.0
+info:
+  title: RescueGroups.org Animals Breeds API
+  version: 5.0.0
+  description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
+  contact:
+    name: RescueGroups.org Developer Community
+    url: https://groups.google.com/a/rescuegroups.org/g/apidev
+  license:
+    name: RescueGroups.org Terms
+    url: https://rescuegroups.org/
+servers:
+- url: https://api.rescuegroups.org/v5
+  description: Production API
+- url: https://dev1-api.rescuegroups.org/v5
+  description: Development/Test API
+security:
+- apiKeyAuth: []
+tags:
+- name: Breeds
+  description: Retrieve animal breed reference data.
+paths:
+  /public/animals/breeds:
+    get:
+      tags:
+      - Breeds
+      summary: List Animal Breeds
+      description: Retrieve all animal breed reference values.
+      operationId: listAnimalBreeds
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/limitParam'
+      responses:
+        '200':
+          description: A list of animal breeds.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ReferenceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+  schemas:
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    ReferenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+    ReferenceListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceItem'
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authorization for public data access.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for private/authenticated data access.

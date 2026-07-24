@@ -1,0 +1,235 @@
+openapi: 3.1.0
+info:
+  title: RescueGroups.org Animals Organizations API
+  version: 5.0.0
+  description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
+  contact:
+    name: RescueGroups.org Developer Community
+    url: https://groups.google.com/a/rescuegroups.org/g/apidev
+  license:
+    name: RescueGroups.org Terms
+    url: https://rescuegroups.org/
+servers:
+- url: https://api.rescuegroups.org/v5
+  description: Production API
+- url: https://dev1-api.rescuegroups.org/v5
+  description: Development/Test API
+security:
+- apiKeyAuth: []
+tags:
+- name: Organizations
+  description: Search and retrieve rescue organization records.
+paths:
+  /public/orgs:
+    get:
+      tags:
+      - Organizations
+      summary: List Public Organizations
+      description: Retrieve a paginated list of public rescue organizations.
+      operationId: listPublicOrgs
+      parameters:
+      - $ref: '#/components/parameters/pageParam'
+      - $ref: '#/components/parameters/limitParam'
+      - $ref: '#/components/parameters/sortParam'
+      - $ref: '#/components/parameters/fieldsParam'
+      - $ref: '#/components/parameters/includeParam'
+      responses:
+        '200':
+          description: A paginated list of organizations.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrgListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/orgs/{org_id}:
+    get:
+      tags:
+      - Organizations
+      summary: Get Public Organization
+      description: Retrieve a single public rescue organization by ID.
+      operationId: getPublicOrg
+      parameters:
+      - name: org_id
+        in: path
+        required: true
+        schema:
+          type: string
+        description: The unique organization identifier.
+      responses:
+        '200':
+          description: A single organization record.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrgSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Specific fields to return.
+  schemas:
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+    OrgSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Organization'
+    OrgListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier.
+        type:
+          type: string
+          enum:
+          - orgs
+        attributes:
+          $ref: '#/components/schemas/OrgAttributes'
+    OrgAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Organization name.
+        type:
+          type: string
+          description: Organization type (rescue, shelter, etc.).
+        email:
+          type: string
+          format: email
+          description: Contact email address.
+        phone:
+          type: string
+          description: Contact phone number.
+        street:
+          type: string
+          description: Street address.
+        city:
+          type: string
+          description: City.
+        state:
+          type: string
+          description: State or province.
+        country:
+          type: string
+          description: Country.
+        postalcode:
+          type: string
+          description: Postal code.
+        url:
+          type: string
+          format: uri
+          description: Organization website URL.
+        adoptionUrl:
+          type: string
+          format: uri
+          description: Adoption application URL.
+        about:
+          type: string
+          description: Organization description.
+        serveAreas:
+          type: string
+          description: Geographic areas the organization serves.
+        facebookUrl:
+          type: string
+          format: uri
+          description: Facebook page URL.
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authorization for public data access.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for private/authenticated data access.

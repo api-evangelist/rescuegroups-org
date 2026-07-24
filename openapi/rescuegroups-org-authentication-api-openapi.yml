@@ -1,0 +1,116 @@
+openapi: 3.1.0
+info:
+  title: RescueGroups.org Animals Authentication API
+  version: 5.0.0
+  description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
+  contact:
+    name: RescueGroups.org Developer Community
+    url: https://groups.google.com/a/rescuegroups.org/g/apidev
+  license:
+    name: RescueGroups.org Terms
+    url: https://rescuegroups.org/
+servers:
+- url: https://api.rescuegroups.org/v5
+  description: Production API
+- url: https://dev1-api.rescuegroups.org/v5
+  description: Development/Test API
+security:
+- apiKeyAuth: []
+tags:
+- name: Authentication
+  description: Obtain bearer tokens for authenticated access.
+paths:
+  /tokens:
+    post:
+      tags:
+      - Authentication
+      summary: Create Authentication Token
+      description: Obtain a bearer token for authenticated (private data) access.
+      operationId: createToken
+      security: []
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '201':
+          description: Token created successfully.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  responses:
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    TokenResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Token ID.
+            attributes:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: Bearer authentication token.
+                expiration:
+                  type: string
+                  format: date-time
+                  description: Token expiration timestamp.
+    TokenRequest:
+      type: object
+      required:
+      - username
+      - password
+      properties:
+        username:
+          type: string
+          description: RescueGroups.org account username.
+        password:
+          type: string
+          description: RescueGroups.org account password.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authorization for public data access.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for private/authenticated data access.
