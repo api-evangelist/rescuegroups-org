@@ -6,7 +6,20 @@ description: >-
   public read-only access via API key and authenticated write access via bearer token, enabling rescue organizations to
   manage and share pet adoption data in real time.
 type: Index
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+accessModel:
+  pricing: freemium
+  onboarding: self-serve
+  trial: false
+  try_now: true
+  public: false
+  label: Freemium · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/rescuegroups-org.png
 tags:
   - Animals
   - Pet Adoption
@@ -17,52 +30,262 @@ created: '2025-01-07'
 modified: '2026-05-19'
 specificationVersion: '0.19'
 apis:
-  - aid: rescuegroups-org:rescuegroups-org
-    name: RescueGroups.org API
-    description: >-
-      The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds,
-      species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and
-      relationship inclusion. API key authorization is used for public data access; bearer token authorization is used
-      for private/write operations.
-    humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
-    baseURL: https://api.rescuegroups.org/v5
-    tags:
-      - Animals
-      - Pet Adoption
-      - Rescue
-      - Organizations
-      - Animal Welfare
-      - Breeds
-      - Species
-    properties:
-      - type: Documentation
-        url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
-      - type: OpenAPI
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/openapi/rescuegroups-org-openapi.yml
-      - type: PostmanCollection
-        url: https://documenter.getpostman.com/view/60615/SWT5j1e4
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
-      - type: JSONSchema
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
-      - type: JSONStructure
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
-      - type: JSONLDContext
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
-      - type: SpectralRules
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
-      - type: Vocabulary
-        url: >-
-          https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
-    contact:
-      - FN: RescueGroups.org Developer Community
-        url: https://groups.google.com/a/rescuegroups.org/g/apidev
+- aid: rescuegroups-org:rescuegroups-org-animals-api
+  name: RescueGroups.org Animals API
+  description: Search and retrieve adoptable animal records.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Animals
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-animals-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-authentication-api
+  name: RescueGroups.org Authentication API
+  description: Obtain bearer tokens for authenticated access.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Authentication
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-authentication-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-breeds-api
+  name: RescueGroups.org Breeds API
+  description: Retrieve animal breed reference data.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Breeds
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-breeds-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-colors-api
+  name: RescueGroups.org Colors API
+  description: Retrieve animal color reference data.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Colors
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-colors-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-organizations-api
+  name: RescueGroups.org Organizations API
+  description: Search and retrieve rescue organization records.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Organizations
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-organizations-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-patterns-api
+  name: RescueGroups.org Patterns API
+  description: Retrieve animal pattern reference data.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Patterns
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-patterns-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-pet-lists-api
+  name: RescueGroups.org Pet Lists API
+  description: Manage organization pet lists.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Pet Lists
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-pet-lists-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
+- aid: rescuegroups-org:rescuegroups-org-species-api
+  name: RescueGroups.org Species API
+  description: Retrieve animal species reference data.
+  humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
+  baseURL: https://api.rescuegroups.org/v5
+  tags:
+  - Species
+  properties:
+  - type: OpenAPI
+    url: openapi/rescuegroups-org-species-api-openapi.yml
+  - type: Documentation
+    url: https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5
+  - type: PostmanCollection
+    url: https://documenter.getpostman.com/view/60615/SWT5j1e4
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json
+  - type: JSONSchema
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json
+  - type: JSONStructure
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json
+  - type: JSONLDContext
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld
+  - type: SpectralRules
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml
+  - type: Vocabulary
+    url: >-
+      https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml
 common:
   - type: AgenticAccess
     url: agentic-access/rescuegroups-org-agentic-access.yml
