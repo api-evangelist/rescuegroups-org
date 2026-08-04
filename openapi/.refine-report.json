@@ -1,0 +1,28 @@
+{
+  "provider": "rescuegroups-org",
+  "sources": [
+    "rescuegroups-org-animals-api-openapi.yml",
+    "rescuegroups-org-authentication-api-openapi.yml",
+    "rescuegroups-org-breeds-api-openapi.yml",
+    "rescuegroups-org-colors-api-openapi.yml",
+    "rescuegroups-org-organizations-api-openapi.yml",
+    "rescuegroups-org-patterns-api-openapi.yml",
+    "rescuegroups-org-pet-lists-api-openapi.yml",
+    "rescuegroups-org-species-api-openapi.yml"
+  ],
+  "outputs": [
+    "rescuegroups-org-animals-api-openapi.yml",
+    "rescuegroups-org-authentication-api-openapi.yml",
+    "rescuegroups-org-breeds-api-openapi.yml",
+    "rescuegroups-org-colors-api-openapi.yml",
+    "rescuegroups-org-organizations-api-openapi.yml",
+    "rescuegroups-org-patterns-api-openapi.yml",
+    "rescuegroups-org-pet-lists-api-openapi.yml",
+    "rescuegroups-org-species-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

@@ -1,0 +1,795 @@
+openapi: 3.1.0
+info:
+  title: RescueGroups.org API
+  version: 5.0.0
+  description: >-
+    The RescueGroups.org REST API v5 provides access to adoptable pet data
+    including animals, organizations, breeds, species, colors, and patterns.
+    It supports advanced search with geodistance filtering, pagination, and
+    relationship inclusion. API key authorization is used for public data
+    access; bearer token authorization is used for private/write operations.
+  contact:
+    name: RescueGroups.org Developer Community
+    url: https://groups.google.com/a/rescuegroups.org/g/apidev
+  license:
+    name: RescueGroups.org Terms
+    url: https://rescuegroups.org/
+servers:
+  - url: https://api.rescuegroups.org/v5
+    description: Production API
+  - url: https://dev1-api.rescuegroups.org/v5
+    description: Development/Test API
+security:
+  - apiKeyAuth: []
+tags:
+  - name: Animals
+    description: Search and retrieve adoptable animal records.
+  - name: Organizations
+    description: Search and retrieve rescue organization records.
+  - name: Breeds
+    description: Retrieve animal breed reference data.
+  - name: Species
+    description: Retrieve animal species reference data.
+  - name: Colors
+    description: Retrieve animal color reference data.
+  - name: Patterns
+    description: Retrieve animal pattern reference data.
+  - name: Pet Lists
+    description: Manage organization pet lists.
+  - name: Authentication
+    description: Obtain bearer tokens for authenticated access.
+paths:
+  /public/animals:
+    get:
+      tags:
+        - Animals
+      summary: List Public Animals
+      description: Retrieve a paginated list of public adoptable animals.
+      operationId: listPublicAnimals
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/fieldsParam'
+        - $ref: '#/components/parameters/includeParam'
+      responses:
+        '200':
+          description: A paginated list of animals.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/AnimalListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '429':
+          $ref: '#/components/responses/TooManyRequests'
+  /public/animals/{animal_id}:
+    get:
+      tags:
+        - Animals
+      summary: Get Public Animal
+      description: Retrieve a single public adoptable animal by ID.
+      operationId: getPublicAnimal
+      parameters:
+        - name: animal_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique animal identifier.
+        - $ref: '#/components/parameters/includeParam'
+      responses:
+        '200':
+          description: A single animal record.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/AnimalSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /public/animals/search/{view_name}:
+    post:
+      tags:
+        - Animals
+      summary: Search Public Animals
+      description: >-
+        Search public adoptable animals using filters, views, and geodistance.
+        Predefined view names include: available, adopted, haspic, cats, dogs,
+        rabbits, and species-specific variants.
+      operationId: searchPublicAnimals
+      parameters:
+        - name: view_name
+          in: path
+          required: true
+          schema:
+            type: string
+          description: Predefined view name (e.g., available, adopted, haspic, cats, dogs).
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/includeParam'
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/SearchRequest'
+      responses:
+        '200':
+          description: Matching animals.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/AnimalListResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/orgs:
+    get:
+      tags:
+        - Organizations
+      summary: List Public Organizations
+      description: Retrieve a paginated list of public rescue organizations.
+      operationId: listPublicOrgs
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
+        - $ref: '#/components/parameters/sortParam'
+        - $ref: '#/components/parameters/fieldsParam'
+        - $ref: '#/components/parameters/includeParam'
+      responses:
+        '200':
+          description: A paginated list of organizations.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrgListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/orgs/{org_id}:
+    get:
+      tags:
+        - Organizations
+      summary: Get Public Organization
+      description: Retrieve a single public rescue organization by ID.
+      operationId: getPublicOrg
+      parameters:
+        - name: org_id
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The unique organization identifier.
+      responses:
+        '200':
+          description: A single organization record.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/OrgSingleResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+  /public/animals/breeds:
+    get:
+      tags:
+        - Breeds
+      summary: List Animal Breeds
+      description: Retrieve all animal breed reference values.
+      operationId: listAnimalBreeds
+      parameters:
+        - $ref: '#/components/parameters/pageParam'
+        - $ref: '#/components/parameters/limitParam'
+      responses:
+        '200':
+          description: A list of animal breeds.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ReferenceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/animals/species:
+    get:
+      tags:
+        - Species
+      summary: List Animal Species
+      description: Retrieve all animal species reference values.
+      operationId: listAnimalSpecies
+      responses:
+        '200':
+          description: A list of animal species.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/SpeciesListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/animals/colors:
+    get:
+      tags:
+        - Colors
+      summary: List Animal Colors
+      description: Retrieve all animal color reference values.
+      operationId: listAnimalColors
+      responses:
+        '200':
+          description: A list of animal colors.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ReferenceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/animals/patterns:
+    get:
+      tags:
+        - Patterns
+      summary: List Animal Patterns
+      description: Retrieve all animal pattern reference values.
+      operationId: listAnimalPatterns
+      responses:
+        '200':
+          description: A list of animal patterns.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/ReferenceListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /public/petlists/{keystring}:
+    get:
+      tags:
+        - Pet Lists
+      summary: Get Pet List
+      description: Retrieve a pet list by its keystring.
+      operationId: getPetList
+      parameters:
+        - name: keystring
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The pet list keystring identifier.
+      responses:
+        '200':
+          description: A pet list.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/PetListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+        '404':
+          $ref: '#/components/responses/NotFound'
+    put:
+      tags:
+        - Pet Lists
+      summary: Update Pet List
+      description: Update a pet list by its keystring.
+      operationId: updatePetList
+      security:
+        - bearerAuth: []
+      parameters:
+        - name: keystring
+          in: path
+          required: true
+          schema:
+            type: string
+          description: The pet list keystring identifier.
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/PetListUpdateRequest'
+      responses:
+        '200':
+          description: Updated pet list.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/PetListResponse'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+  /tokens:
+    post:
+      tags:
+        - Authentication
+      summary: Create Authentication Token
+      description: Obtain a bearer token for authenticated (private data) access.
+      operationId: createToken
+      security: []
+      requestBody:
+        content:
+          application/vnd.api+json:
+            schema:
+              $ref: '#/components/schemas/TokenRequest'
+      responses:
+        '201':
+          description: Token created successfully.
+          content:
+            application/vnd.api+json:
+              schema:
+                $ref: '#/components/schemas/TokenResponse'
+        '400':
+          $ref: '#/components/responses/BadRequest'
+        '401':
+          $ref: '#/components/responses/Unauthorized'
+components:
+  securitySchemes:
+    apiKeyAuth:
+      type: apiKey
+      in: header
+      name: Authorization
+      description: API key authorization for public data access.
+    bearerAuth:
+      type: http
+      scheme: bearer
+      description: Bearer token for private/authenticated data access.
+  parameters:
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Specific fields to return.
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+  responses:
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    NotFound:
+      description: Resource not found.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    TooManyRequests:
+      description: Rate limit exceeded.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+  schemas:
+    Animal:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique animal identifier.
+        type:
+          type: string
+          enum: [animals]
+        attributes:
+          $ref: '#/components/schemas/AnimalAttributes'
+        relationships:
+          type: object
+          properties:
+            breeds:
+              $ref: '#/components/schemas/RelationshipData'
+            colors:
+              $ref: '#/components/schemas/RelationshipData'
+            patterns:
+              $ref: '#/components/schemas/RelationshipData'
+            species:
+              $ref: '#/components/schemas/RelationshipData'
+            orgs:
+              $ref: '#/components/schemas/RelationshipData'
+            pictures:
+              $ref: '#/components/schemas/RelationshipData'
+    AnimalAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Animal name.
+        birthDate:
+          type: string
+          format: date
+          description: Animal birth date.
+        sex:
+          type: string
+          enum: [Male, Female, Unknown]
+          description: Animal sex.
+        ageGroup:
+          type: string
+          enum: [Baby, Young, Adult, Senior]
+          description: Age group category.
+        sizeGroup:
+          type: string
+          enum: [Small, Medium, Large, Extra Large]
+          description: Size group category.
+        isAdoptionPending:
+          type: boolean
+          description: Whether adoption is pending.
+        isAltered:
+          type: boolean
+          description: Whether the animal is spayed/neutered.
+        pictureCount:
+          type: integer
+          description: Number of pictures available.
+        videoCount:
+          type: integer
+          description: Number of videos available.
+        adoptedDate:
+          type: string
+          format: date
+          description: Date the animal was adopted.
+        specialNeedsDetails:
+          type: string
+          description: Description of any special needs.
+        descriptionText:
+          type: string
+          description: Plain text description of the animal.
+        locationCitystate:
+          type: string
+          description: City and state where the animal is located.
+        locationState:
+          type: string
+          description: State where the animal is located.
+        locationDistance:
+          type: number
+          description: Distance from search location.
+        rescueId:
+          type: string
+          description: External rescue ID.
+        url:
+          type: string
+          format: uri
+          description: URL of the animal profile page.
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier.
+        type:
+          type: string
+          enum: [orgs]
+        attributes:
+          $ref: '#/components/schemas/OrgAttributes'
+    OrgAttributes:
+      type: object
+      properties:
+        name:
+          type: string
+          description: Organization name.
+        type:
+          type: string
+          description: Organization type (rescue, shelter, etc.).
+        email:
+          type: string
+          format: email
+          description: Contact email address.
+        phone:
+          type: string
+          description: Contact phone number.
+        street:
+          type: string
+          description: Street address.
+        city:
+          type: string
+          description: City.
+        state:
+          type: string
+          description: State or province.
+        country:
+          type: string
+          description: Country.
+        postalcode:
+          type: string
+          description: Postal code.
+        url:
+          type: string
+          format: uri
+          description: Organization website URL.
+        adoptionUrl:
+          type: string
+          format: uri
+          description: Adoption application URL.
+        about:
+          type: string
+          description: Organization description.
+        serveAreas:
+          type: string
+          description: Geographic areas the organization serves.
+        facebookUrl:
+          type: string
+          format: uri
+          description: Facebook page URL.
+    SearchRequest:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            filters:
+              type: array
+              items:
+                $ref: '#/components/schemas/SearchFilter'
+            filterProcessing:
+              type: string
+              description: Boolean expression for filter combination.
+            geodistance:
+              $ref: '#/components/schemas/GeoDistance'
+    SearchFilter:
+      type: object
+      required:
+        - fieldName
+        - operation
+      properties:
+        fieldName:
+          type: string
+          description: Field name to filter on.
+        operation:
+          type: string
+          enum:
+            - equal
+            - notequal
+            - lessthan
+            - greaterthan
+            - contains
+            - notcontains
+            - blank
+            - notblank
+            - startswith
+            - endswith
+          description: Filter operation.
+        criteria:
+          type: string
+          description: Filter value or special criteria (e.g., rg:contactID, rg:today).
+    GeoDistance:
+      type: object
+      properties:
+        postalcode:
+          type: string
+          description: Postal code for distance search.
+        lat:
+          type: number
+          description: Latitude for coordinate-based search.
+        lon:
+          type: number
+          description: Longitude for coordinate-based search.
+        miles:
+          type: integer
+          description: Search radius in miles.
+        kilometers:
+          type: integer
+          description: Search radius in kilometers.
+    TokenRequest:
+      type: object
+      required:
+        - username
+        - password
+      properties:
+        username:
+          type: string
+          description: RescueGroups.org account username.
+        password:
+          type: string
+          description: RescueGroups.org account password.
+    TokenResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+              description: Token ID.
+            attributes:
+              type: object
+              properties:
+                token:
+                  type: string
+                  description: Bearer authentication token.
+                expiration:
+                  type: string
+                  format: date-time
+                  description: Token expiration timestamp.
+    AnimalListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+        included:
+          type: array
+          items:
+            type: object
+    AnimalSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Animal'
+        included:
+          type: array
+          items:
+            type: object
+    OrgListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
+    OrgSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Organization'
+    ReferenceListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceItem'
+    SpeciesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeciesItem'
+    ReferenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
+    SpeciesItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            singular:
+              type: string
+              description: Singular species name.
+            plural:
+              type: string
+              description: Plural species name.
+            youngSingular:
+              type: string
+              description: Singular name for young of the species.
+            youngPlural:
+              type: string
+              description: Plural name for young of the species.
+    PetListResponse:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            id:
+              type: string
+            type:
+              type: string
+            attributes:
+              type: object
+              properties:
+                keystring:
+                  type: string
+                name:
+                  type: string
+    PetListUpdateRequest:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              enum: [petlists]
+            id:
+              type: string
+            attributes:
+              type: object
+              additionalProperties: true
+    RelationshipData:
+      type: object
+      properties:
+        data:
+          oneOf:
+            - type: object
+              properties:
+                type:
+                  type: string
+                id:
+                  type: string
+            - type: array
+              items:
+                type: object
+                properties:
+                  type:
+                    type: string
+                  id:
+                    type: string
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
