@@ -1,0 +1,72 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RescueGroups.org Animals Pet Lists API",
+    "version": "5.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Pet Lists",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Pet List",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/petlists/:keystring",
+            "params": [
+              {
+                "name": "keystring",
+                "value": "",
+                "type": "path",
+                "description": "The pet list keystring identifier."
+              }
+            ]
+          },
+          "docs": "Retrieve a pet list by its keystring."
+        },
+        {
+          "info": {
+            "name": "Update Pet List",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "https://api.rescuegroups.org/v5/public/petlists/:keystring",
+            "params": [
+              {
+                "name": "keystring",
+                "value": "",
+                "type": "path",
+                "description": "The pet list keystring identifier."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            },
+            "auth": {
+              "type": "bearer",
+              "token": "{{bearerToken}}"
+            }
+          },
+          "docs": "Update a pet list by its keystring."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

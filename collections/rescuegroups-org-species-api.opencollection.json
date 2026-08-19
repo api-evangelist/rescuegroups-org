@@ -1,0 +1,37 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RescueGroups.org Animals Species API",
+    "version": "5.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Species",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Animal Species",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/species"
+          },
+          "docs": "Retrieve all animal species reference values."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

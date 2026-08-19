@@ -1,0 +1,141 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "RescueGroups.org Animals API",
+    "version": "5.0.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "Authorization",
+      "value": "{{Authorization}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Animals",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Public Animals",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals",
+            "params": [
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field with optional +/- prefix for direction."
+              },
+              {
+                "name": "fields[]",
+                "value": "",
+                "type": "query",
+                "description": "Specific fields to return."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a paginated list of public adoptable animals."
+        },
+        {
+          "info": {
+            "name": "Get Public Animal",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.rescuegroups.org/v5/public/animals/:animal_id",
+            "params": [
+              {
+                "name": "animal_id",
+                "value": "",
+                "type": "path",
+                "description": "The unique animal identifier."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ]
+          },
+          "docs": "Retrieve a single public adoptable animal by ID."
+        },
+        {
+          "info": {
+            "name": "Search Public Animals",
+            "type": "http"
+          },
+          "http": {
+            "method": "POST",
+            "url": "https://api.rescuegroups.org/v5/public/animals/search/:view_name",
+            "params": [
+              {
+                "name": "view_name",
+                "value": "",
+                "type": "path",
+                "description": "Predefined view name (e.g., available, adopted, haspic, cats, dogs)."
+              },
+              {
+                "name": "page",
+                "value": "",
+                "type": "query",
+                "description": "Page number for paginated results."
+              },
+              {
+                "name": "limit",
+                "value": "",
+                "type": "query",
+                "description": "Number of records per page (max 250)."
+              },
+              {
+                "name": "sort",
+                "value": "",
+                "type": "query",
+                "description": "Sort field with optional +/- prefix for direction."
+              },
+              {
+                "name": "include[]",
+                "value": "",
+                "type": "query",
+                "description": "Related entities to include in the response."
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Search public adoptable animals using filters, views, and geodistance. Predefined view names include: available, adopted, haspic, cats, dogs, rabbits, and species-specific variants."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}
