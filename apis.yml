@@ -164,6 +164,8 @@ apis:
   humanURL: https://rescuegroups.org/services/adoptable-pet-data-api/
   baseURL: https://api.rescuegroups.org/v5
   tags:
+  - Organization
+  tags_raw:
   - Organizations
   properties:
   - type: OpenAPI
