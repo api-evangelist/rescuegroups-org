@@ -2,25 +2,21 @@
   "repo": "rescuegroups-org",
   "feeds": [
     {
-      "source": "https://rescuegroups.org/feed/",
-      "feed_url": "https://rescuegroups.org/feed/",
-      "title": "",
-      "saved": 0,
-      "method": "feed",
-      "nature": "undetermined",
-      "nature_basis": null
-    },
-    {
       "source": "https://rescuegroups.org/about/",
       "feed_url": "https://rescuegroups.org/feed/",
       "title": "",
       "saved": 0,
-      "method": "discovered",
-      "nature": "undetermined",
-      "nature_basis": null
+      "method": "discovered"
+    },
+    {
+      "source": "https://rescuegroups.org/feed/",
+      "feed_url": "https://rescuegroups.org/feed/",
+      "title": "",
+      "saved": 0,
+      "method": "feed"
     }
   ],
-  "fetched": "2026-08-30T22:33:40Z",
+  "fetched": "2026-09-06T19:17:18Z",
   "post_count": 22,
   "feed_nature": "undetermined",
   "feed_nature_basis": null,
