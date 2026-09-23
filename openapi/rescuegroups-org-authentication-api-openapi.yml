@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: RescueGroups.org Animals Authentication API
+  title: RescueGroups.org Authentication API
   version: 5.0.0
   description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
   contact:
@@ -45,21 +45,32 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
+  responses:
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    ErrorResponse:
+    TokenRequest:
       type: object
+      required:
+      - username
+      - password
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
+        username:
+          type: string
+          description: RescueGroups.org account username.
+        password:
+          type: string
+          description: RescueGroups.org account password.
     TokenResponse:
       type: object
       properties:
@@ -79,31 +90,20 @@ components:
                   type: string
                   format: date-time
                   description: Token expiration timestamp.
-    TokenRequest:
+    ErrorResponse:
       type: object
-      required:
-      - username
-      - password
       properties:
-        username:
-          type: string
-          description: RescueGroups.org account username.
-        password:
-          type: string
-          description: RescueGroups.org account password.
-  responses:
-    Unauthorized:
-      description: Missing or invalid authorization.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
   securitySchemes:
     apiKeyAuth:
       type: apiKey

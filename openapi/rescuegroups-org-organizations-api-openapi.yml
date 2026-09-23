@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: RescueGroups.org Animals Organizations API
+  title: RescueGroups.org Organizations API
   version: 5.0.0
   description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
   contact:
@@ -68,61 +68,7 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
-  parameters:
-    includeParam:
-      name: include[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Related entities to include in the response.
-    pageParam:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for paginated results.
-    sortParam:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort field with optional +/- prefix for direction.
-    limitParam:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 250
-        default: 25
-      description: Number of records per page (max 250).
-    fieldsParam:
-      name: fields[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Specific fields to return.
   schemas:
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
     ResponseMeta:
       type: object
       properties:
@@ -210,6 +156,60 @@ components:
           type: string
           format: uri
           description: Facebook page URL.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+  parameters:
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Specific fields to return.
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
   responses:
     Unauthorized:
       description: Missing or invalid authorization.

@@ -106,70 +106,24 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ErrorResponse:
+    GeoDistance:
       type: object
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
-    SearchRequest:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            filters:
-              type: array
-              items:
-                $ref: '#/components/schemas/SearchFilter'
-            filterProcessing:
-              type: string
-              description: Boolean expression for filter combination.
-            geodistance:
-              $ref: '#/components/schemas/GeoDistance'
-    SearchFilter:
-      type: object
-      required:
-      - fieldName
-      - operation
-      properties:
-        fieldName:
+        postalcode:
           type: string
-          description: Field name to filter on.
-        operation:
-          type: string
-          enum:
-          - equal
-          - notequal
-          - lessthan
-          - greaterthan
-          - contains
-          - notcontains
-          - blank
-          - notblank
-          - startswith
-          - endswith
-          description: Filter operation.
-        criteria:
-          type: string
-          description: Filter value or special criteria (e.g., rg:contactID, rg:today).
-    AnimalSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Animal'
-        included:
-          type: array
-          items:
-            type: object
+          description: Postal code for distance search.
+        lat:
+          type: number
+          description: Latitude for coordinate-based search.
+        lon:
+          type: number
+          description: Longitude for coordinate-based search.
+        miles:
+          type: integer
+          description: Search radius in miles.
+        kilometers:
+          type: integer
+          description: Search radius in kilometers.
     AnimalAttributes:
       type: object
       properties:
@@ -241,18 +195,6 @@ components:
           type: string
           format: uri
           description: URL of the animal profile page.
-    ResponseMeta:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of matching records.
-        pageCount:
-          type: integer
-          description: Total number of pages.
-        transactionId:
-          type: string
-          description: Unique transaction identifier for support requests.
     Animal:
       type: object
       properties:
@@ -280,6 +222,68 @@ components:
               $ref: '#/components/schemas/RelationshipData'
             pictures:
               $ref: '#/components/schemas/RelationshipData'
+    SearchRequest:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            filters:
+              type: array
+              items:
+                $ref: '#/components/schemas/SearchFilter'
+            filterProcessing:
+              type: string
+              description: Boolean expression for filter combination.
+            geodistance:
+              $ref: '#/components/schemas/GeoDistance'
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    SearchFilter:
+      type: object
+      required:
+      - fieldName
+      - operation
+      properties:
+        fieldName:
+          type: string
+          description: Field name to filter on.
+        operation:
+          type: string
+          enum:
+          - equal
+          - notequal
+          - lessthan
+          - greaterthan
+          - contains
+          - notcontains
+          - blank
+          - notblank
+          - startswith
+          - endswith
+          description: Filter operation.
+        criteria:
+          type: string
+          description: Filter value or special criteria (e.g., rg:contactID, rg:today).
+    AnimalSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Animal'
+        included:
+          type: array
+          items:
+            type: object
     AnimalListResponse:
       type: object
       properties:
@@ -312,27 +316,63 @@ components:
                   type: string
                 id:
                   type: string
-    GeoDistance:
+    ErrorResponse:
       type: object
       properties:
-        postalcode:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+  parameters:
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
           type: string
-          description: Postal code for distance search.
-        lat:
-          type: number
-          description: Latitude for coordinate-based search.
-        lon:
-          type: number
-          description: Longitude for coordinate-based search.
-        miles:
-          type: integer
-          description: Search radius in miles.
-        kilometers:
-          type: integer
-          description: Search radius in kilometers.
+      description: Specific fields to return.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
   responses:
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid authorization.
       content:
         application/vnd.api+json:
           schema:
@@ -343,8 +383,8 @@ components:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid authorization.
+    NotFound:
+      description: Resource not found.
       content:
         application/vnd.api+json:
           schema:
@@ -355,46 +395,6 @@ components:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    pageParam:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for paginated results.
-    includeParam:
-      name: include[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Related entities to include in the response.
-    sortParam:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort field with optional +/- prefix for direction.
-    limitParam:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 250
-        default: 25
-      description: Number of records per page (max 250).
-    fieldsParam:
-      name: fields[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Specific fields to return.
   securitySchemes:
     apiKeyAuth:
       type: apiKey

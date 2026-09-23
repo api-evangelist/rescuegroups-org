@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: RescueGroups.org Animals Species API
+  title: RescueGroups.org Species API
   version: 5.0.0
   description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
   contact:
@@ -38,6 +38,13 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    SpeciesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeciesItem'
     ErrorResponse:
       type: object
       properties:
@@ -74,13 +81,6 @@ components:
             youngPlural:
               type: string
               description: Plural name for young of the species.
-    SpeciesListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SpeciesItem'
   responses:
     Unauthorized:
       description: Missing or invalid authorization.

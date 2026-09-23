@@ -1,6 +1,6 @@
 openapi: 3.2.0
 info:
-  title: RescueGroups.org Animals Breeds API
+  title: RescueGroups.org Breeds API
   version: 5.0.0
   description: The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
   contact:
@@ -40,25 +40,40 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  parameters:
-    pageParam:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for paginated results.
-    limitParam:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 250
-        default: 25
-      description: Number of records per page (max 250).
   schemas:
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    ReferenceListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceItem'
+    ReferenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
     ErrorResponse:
       type: object
       properties:
@@ -73,39 +88,24 @@ components:
                 type: string
               detail:
                 type: string
-    ResponseMeta:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of matching records.
-        pageCount:
-          type: integer
-          description: Total number of pages.
-        transactionId:
-          type: string
-          description: Unique transaction identifier for support requests.
-    ReferenceItem:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        attributes:
-          type: object
-          properties:
-            name:
-              type: string
-    ReferenceListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReferenceItem'
+  parameters:
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
   responses:
     Unauthorized:
       description: Missing or invalid authorization.
