@@ -38,39 +38,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ResponseMeta:
-      type: object
-      properties:
-        count:
-          type: integer
-          description: Total number of matching records.
-        pageCount:
-          type: integer
-          description: Total number of pages.
-        transactionId:
-          type: string
-          description: Unique transaction identifier for support requests.
-    ReferenceListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReferenceItem'
-    ReferenceItem:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        attributes:
-          type: object
-          properties:
-            name:
-              type: string
     ErrorResponse:
       type: object
       properties:
@@ -85,6 +52,39 @@ components:
                 type: string
               detail:
                 type: string
+    ReferenceListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceItem'
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    ReferenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
   responses:
     Unauthorized:
       description: Missing or invalid authorization.

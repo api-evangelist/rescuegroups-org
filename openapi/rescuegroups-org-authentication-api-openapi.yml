@@ -45,32 +45,21 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    BadRequest:
-      description: Invalid request parameters.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid authorization.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
-    TokenRequest:
+    ErrorResponse:
       type: object
-      required:
-      - username
-      - password
       properties:
-        username:
-          type: string
-          description: RescueGroups.org account username.
-        password:
-          type: string
-          description: RescueGroups.org account password.
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
     TokenResponse:
       type: object
       properties:
@@ -90,20 +79,31 @@ components:
                   type: string
                   format: date-time
                   description: Token expiration timestamp.
-    ErrorResponse:
+    TokenRequest:
       type: object
+      required:
+      - username
+      - password
       properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
+        username:
+          type: string
+          description: RescueGroups.org account username.
+        password:
+          type: string
+          description: RescueGroups.org account password.
+  responses:
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
+    BadRequest:
+      description: Invalid request parameters.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

@@ -76,6 +76,35 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+    PetListUpdateRequest:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            type:
+              type: string
+              enum:
+              - petlists
+            id:
+              type: string
+            attributes:
+              type: object
+              additionalProperties: true
     PetListResponse:
       type: object
       properties:
@@ -93,44 +122,15 @@ components:
                   type: string
                 name:
                   type: string
-    PetListUpdateRequest:
-      type: object
-      properties:
-        data:
-          type: object
-          properties:
-            type:
-              type: string
-              enum:
-              - petlists
-            id:
-              type: string
-            attributes:
-              type: object
-              additionalProperties: true
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
   responses:
-    Unauthorized:
-      description: Missing or invalid authorization.
+    NotFound:
+      description: Resource not found.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid authorization.
       content:
         application/vnd.api+json:
           schema:

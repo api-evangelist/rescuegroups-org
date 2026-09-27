@@ -69,44 +69,20 @@ paths:
           $ref: '#/components/responses/NotFound'
 components:
   schemas:
-    ResponseMeta:
+    ErrorResponse:
       type: object
       properties:
-        count:
-          type: integer
-          description: Total number of matching records.
-        pageCount:
-          type: integer
-          description: Total number of pages.
-        transactionId:
-          type: string
-          description: Unique transaction identifier for support requests.
-    Organization:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique organization identifier.
-        type:
-          type: string
-          enum:
-          - orgs
-        attributes:
-          $ref: '#/components/schemas/OrgAttributes'
-    OrgListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
+        errors:
           type: array
           items:
-            $ref: '#/components/schemas/Organization'
-    OrgSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Organization'
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
     OrgAttributes:
       type: object
       properties:
@@ -156,27 +132,45 @@ components:
           type: string
           format: uri
           description: Facebook page URL.
-    ErrorResponse:
+    OrgListResponse:
       type: object
       properties:
-        errors:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
           type: array
           items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
+            $ref: '#/components/schemas/Organization'
+    ResponseMeta:
+      type: object
+      properties:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
+          type: string
+          description: Unique transaction identifier for support requests.
+    Organization:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique organization identifier.
+        type:
+          type: string
+          enum:
+          - orgs
+        attributes:
+          $ref: '#/components/schemas/OrgAttributes'
+    OrgSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Organization'
   parameters:
-    sortParam:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort field with optional +/- prefix for direction.
     limitParam:
       name: limit
       in: query
@@ -186,14 +180,6 @@ components:
         maximum: 250
         default: 25
       description: Number of records per page (max 250).
-    includeParam:
-      name: include[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Related entities to include in the response.
     fieldsParam:
       name: fields[]
       in: query
@@ -202,6 +188,14 @@ components:
         items:
           type: string
       description: Specific fields to return.
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
     pageParam:
       name: page
       in: query
@@ -210,15 +204,21 @@ components:
         minimum: 1
         default: 1
       description: Page number for paginated results.
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
   responses:
-    Unauthorized:
-      description: Missing or invalid authorization.
+    NotFound:
+      description: Resource not found.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid authorization.
       content:
         application/vnd.api+json:
           schema:

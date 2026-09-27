@@ -38,13 +38,6 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    SpeciesListResponse:
-      type: object
-      properties:
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/SpeciesItem'
     ErrorResponse:
       type: object
       properties:
@@ -59,6 +52,13 @@ components:
                 type: string
               detail:
                 type: string
+    SpeciesListResponse:
+      type: object
+      properties:
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/SpeciesItem'
     SpeciesItem:
       type: object
       properties:
