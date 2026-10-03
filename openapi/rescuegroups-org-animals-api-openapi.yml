@@ -106,14 +106,14 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   responses:
-    TooManyRequests:
-      description: Rate limit exceeded.
+    Unauthorized:
+      description: Missing or invalid authorization.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    Unauthorized:
-      description: Missing or invalid authorization.
+    TooManyRequests:
+      description: Rate limit exceeded.
       content:
         application/vnd.api+json:
           schema:
@@ -130,75 +130,48 @@ components:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-  parameters:
-    sortParam:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort field with optional +/- prefix for direction.
-    limitParam:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 250
-        default: 25
-      description: Number of records per page (max 250).
-    pageParam:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for paginated results.
-    fieldsParam:
-      name: fields[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Specific fields to return.
-    includeParam:
-      name: include[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Related entities to include in the response.
   schemas:
-    SearchRequest:
+    ErrorResponse:
       type: object
       properties:
-        data:
-          type: object
-          properties:
-            filters:
-              type: array
-              items:
-                $ref: '#/components/schemas/SearchFilter'
-            filterProcessing:
-              type: string
-              description: Boolean expression for filter combination.
-            geodistance:
-              $ref: '#/components/schemas/GeoDistance'
-    AnimalListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Animal'
-        included:
+        errors:
           type: array
           items:
             type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
+    Animal:
+      type: object
+      properties:
+        id:
+          type: string
+          description: Unique animal identifier.
+        type:
+          type: string
+          enum:
+          - animals
+        attributes:
+          $ref: '#/components/schemas/AnimalAttributes'
+        relationships:
+          type: object
+          properties:
+            breeds:
+              $ref: '#/components/schemas/RelationshipData'
+            colors:
+              $ref: '#/components/schemas/RelationshipData'
+            patterns:
+              $ref: '#/components/schemas/RelationshipData'
+            species:
+              $ref: '#/components/schemas/RelationshipData'
+            orgs:
+              $ref: '#/components/schemas/RelationshipData'
+            pictures:
+              $ref: '#/components/schemas/RelationshipData'
     AnimalAttributes:
       type: object
       properties:
@@ -279,47 +252,6 @@ components:
           type: array
           items:
             type: object
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
-    Animal:
-      type: object
-      properties:
-        id:
-          type: string
-          description: Unique animal identifier.
-        type:
-          type: string
-          enum:
-          - animals
-        attributes:
-          $ref: '#/components/schemas/AnimalAttributes'
-        relationships:
-          type: object
-          properties:
-            breeds:
-              $ref: '#/components/schemas/RelationshipData'
-            colors:
-              $ref: '#/components/schemas/RelationshipData'
-            patterns:
-              $ref: '#/components/schemas/RelationshipData'
-            species:
-              $ref: '#/components/schemas/RelationshipData'
-            orgs:
-              $ref: '#/components/schemas/RelationshipData'
-            pictures:
-              $ref: '#/components/schemas/RelationshipData'
     ResponseMeta:
       type: object
       properties:
@@ -332,6 +264,25 @@ components:
         transactionId:
           type: string
           description: Unique transaction identifier for support requests.
+    RelationshipData:
+      type: object
+      properties:
+        data:
+          oneOf:
+          - type: object
+            properties:
+              type:
+                type: string
+              id:
+                type: string
+          - type: array
+            items:
+              type: object
+              properties:
+                type:
+                  type: string
+                id:
+                  type: string
     GeoDistance:
       type: object
       properties:
@@ -350,6 +301,34 @@ components:
         kilometers:
           type: integer
           description: Search radius in kilometers.
+    SearchRequest:
+      type: object
+      properties:
+        data:
+          type: object
+          properties:
+            filters:
+              type: array
+              items:
+                $ref: '#/components/schemas/SearchFilter'
+            filterProcessing:
+              type: string
+              description: Boolean expression for filter combination.
+            geodistance:
+              $ref: '#/components/schemas/GeoDistance'
+    AnimalListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Animal'
+        included:
+          type: array
+          items:
+            type: object
     SearchFilter:
       type: object
       required:
@@ -376,25 +355,46 @@ components:
         criteria:
           type: string
           description: Filter value or special criteria (e.g., rg:contactID, rg:today).
-    RelationshipData:
-      type: object
-      properties:
-        data:
-          oneOf:
-          - type: object
-            properties:
-              type:
-                type: string
-              id:
-                type: string
-          - type: array
-            items:
-              type: object
-              properties:
-                type:
-                  type: string
-                id:
-                  type: string
+  parameters:
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Specific fields to return.
   securitySchemes:
     apiKeyAuth:
       type: apiKey
