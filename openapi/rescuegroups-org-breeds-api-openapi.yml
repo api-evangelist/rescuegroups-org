@@ -40,14 +40,19 @@ paths:
         '401':
           $ref: '#/components/responses/Unauthorized'
 components:
-  responses:
-    Unauthorized:
-      description: Missing or invalid authorization.
-      content:
-        application/vnd.api+json:
-          schema:
-            $ref: '#/components/schemas/ErrorResponse'
   schemas:
+    ReferenceItem:
+      type: object
+      properties:
+        id:
+          type: string
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
     ErrorResponse:
       type: object
       properties:
@@ -62,27 +67,6 @@ components:
                 type: string
               detail:
                 type: string
-    ReferenceItem:
-      type: object
-      properties:
-        id:
-          type: string
-        type:
-          type: string
-        attributes:
-          type: object
-          properties:
-            name:
-              type: string
-    ReferenceListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/ReferenceItem'
     ResponseMeta:
       type: object
       properties:
@@ -95,6 +79,15 @@ components:
         transactionId:
           type: string
           description: Unique transaction identifier for support requests.
+    ReferenceListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/ReferenceItem'
   parameters:
     limitParam:
       name: limit
@@ -113,6 +106,13 @@ components:
         minimum: 1
         default: 1
       description: Page number for paginated results.
+  responses:
+    Unauthorized:
+      description: Missing or invalid authorization.
+      content:
+        application/vnd.api+json:
+          schema:
+            $ref: '#/components/schemas/ErrorResponse'
   securitySchemes:
     apiKeyAuth:
       type: apiKey

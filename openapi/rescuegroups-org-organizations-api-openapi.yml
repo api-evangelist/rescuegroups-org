@@ -68,35 +68,47 @@ paths:
         '404':
           $ref: '#/components/responses/NotFound'
 components:
+  parameters:
+    sortParam:
+      name: sort
+      in: query
+      schema:
+        type: string
+      description: Sort field with optional +/- prefix for direction.
+    includeParam:
+      name: include[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Related entities to include in the response.
+    limitParam:
+      name: limit
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        maximum: 250
+        default: 25
+      description: Number of records per page (max 250).
+    pageParam:
+      name: page
+      in: query
+      schema:
+        type: integer
+        minimum: 1
+        default: 1
+      description: Page number for paginated results.
+    fieldsParam:
+      name: fields[]
+      in: query
+      schema:
+        type: array
+        items:
+          type: string
+      description: Specific fields to return.
   schemas:
-    OrgListResponse:
-      type: object
-      properties:
-        meta:
-          $ref: '#/components/schemas/ResponseMeta'
-        data:
-          type: array
-          items:
-            $ref: '#/components/schemas/Organization'
-    ErrorResponse:
-      type: object
-      properties:
-        errors:
-          type: array
-          items:
-            type: object
-            properties:
-              status:
-                type: string
-              title:
-                type: string
-              detail:
-                type: string
-    OrgSingleResponse:
-      type: object
-      properties:
-        data:
-          $ref: '#/components/schemas/Organization'
     OrgAttributes:
       type: object
       properties:
@@ -146,6 +158,20 @@ components:
           type: string
           format: uri
           description: Facebook page URL.
+    ErrorResponse:
+      type: object
+      properties:
+        errors:
+          type: array
+          items:
+            type: object
+            properties:
+              status:
+                type: string
+              title:
+                type: string
+              detail:
+                type: string
     ResponseMeta:
       type: object
       properties:
@@ -158,6 +184,20 @@ components:
         transactionId:
           type: string
           description: Unique transaction identifier for support requests.
+    OrgSingleResponse:
+      type: object
+      properties:
+        data:
+          $ref: '#/components/schemas/Organization'
+    OrgListResponse:
+      type: object
+      properties:
+        meta:
+          $ref: '#/components/schemas/ResponseMeta'
+        data:
+          type: array
+          items:
+            $ref: '#/components/schemas/Organization'
     Organization:
       type: object
       properties:
@@ -170,55 +210,15 @@ components:
           - orgs
         attributes:
           $ref: '#/components/schemas/OrgAttributes'
-  parameters:
-    fieldsParam:
-      name: fields[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Specific fields to return.
-    includeParam:
-      name: include[]
-      in: query
-      schema:
-        type: array
-        items:
-          type: string
-      description: Related entities to include in the response.
-    sortParam:
-      name: sort
-      in: query
-      schema:
-        type: string
-      description: Sort field with optional +/- prefix for direction.
-    limitParam:
-      name: limit
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        maximum: 250
-        default: 25
-      description: Number of records per page (max 250).
-    pageParam:
-      name: page
-      in: query
-      schema:
-        type: integer
-        minimum: 1
-        default: 1
-      description: Page number for paginated results.
   responses:
-    Unauthorized:
-      description: Missing or invalid authorization.
+    NotFound:
+      description: Resource not found.
       content:
         application/vnd.api+json:
           schema:
             $ref: '#/components/schemas/ErrorResponse'
-    NotFound:
-      description: Resource not found.
+    Unauthorized:
+      description: Missing or invalid authorization.
       content:
         application/vnd.api+json:
           schema:
