@@ -38,18 +38,18 @@ paths:
           $ref: '#/components/responses/Unauthorized'
 components:
   schemas:
-    ReferenceItem:
+    ResponseMeta:
       type: object
       properties:
-        id:
+        count:
+          type: integer
+          description: Total number of matching records.
+        pageCount:
+          type: integer
+          description: Total number of pages.
+        transactionId:
           type: string
-        type:
-          type: string
-        attributes:
-          type: object
-          properties:
-            name:
-              type: string
+          description: Unique transaction identifier for support requests.
     ErrorResponse:
       type: object
       properties:
@@ -64,18 +64,18 @@ components:
                 type: string
               detail:
                 type: string
-    ResponseMeta:
+    ReferenceItem:
       type: object
       properties:
-        count:
-          type: integer
-          description: Total number of matching records.
-        pageCount:
-          type: integer
-          description: Total number of pages.
-        transactionId:
+        id:
           type: string
-          description: Unique transaction identifier for support requests.
+        type:
+          type: string
+        attributes:
+          type: object
+          properties:
+            name:
+              type: string
     ReferenceListResponse:
       type: object
       properties:
