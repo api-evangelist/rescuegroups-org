@@ -1,4 +1,4 @@
-# RescueGroups.org (rescuegroups-org)
+# RescueGroups.org
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,68 +66,167 @@
 
 RescueGroups.org provides the only updatable HTTP/JSON API for adoptable pet data, offering comprehensive search across animals, organizations, breeds, species, colors, and patterns with geodistance filtering. The API supports both public read-only access via API key and authenticated write access via bearer token, enabling rescue organizations to manage and share pet adoption data in real time.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/apis.yml)
+**Areas:** Animals · Pet Adoption · Rescue · Animal Welfare
 
-## Scope
+## RescueGroups.org on APIs.io
 
-- **Type:** Index
+Everything profiled for RescueGroups.org is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/rescuegroups-org/](https://apis.io/providers/rescuegroups-org/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (8)
 
-- Animals
-- Pet Adoption
-- Rescue
-- Animal Welfare
+- [RescueGroups.org Animals API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-animals-api/) — Search and retrieve adoptable animal records.
+- [RescueGroups.org Authentication API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-authentication-api/) — Obtain bearer tokens for authenticated access.
+- [RescueGroups.org Breeds API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-breeds-api/) — Retrieve animal breed reference data.
+- [RescueGroups.org Colors API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-colors-api/) — Retrieve animal color reference data.
+- [RescueGroups.org Organizations API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-organizations-api/) — Search and retrieve rescue organization records.
+- [RescueGroups.org Patterns API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-patterns-api/) — Retrieve animal pattern reference data.
+- [RescueGroups.org Pet Lists API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-pet-lists-api/) — Manage organization pet lists.
+- [RescueGroups.org Species API](https://apis.io/apis/rescuegroups-org/rescuegroups-org-species-api/) — Retrieve animal species reference data.
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-01-07
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### RescueGroups.org API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-The RescueGroups.org REST API v5 provides access to adoptable pet data including animals, organizations, breeds, species, colors, and patterns. It supports advanced search with geodistance filtering, pagination, and relationship inclusion. API key authorization is used for public data access; bearer token authorization is used for private/write operations.
+- [Rescuegroups Org Agentic Access](https://apis.io/agentic-access/rescuegroups-org/rescuegroups-org-agentic-access/)
 
-- **Human URL:** [https://rescuegroups.org/services/adoptable-pet-data-api/](https://rescuegroups.org/services/adoptable-pet-data-api/)
-- **Base URL:** `https://api.rescuegroups.org/v5`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Animals
-- Pet Adoption
-- Rescue
-- Organizations
-- Animal Welfare
-- Breeds
-- Species
+- [RescueGroups.org Animal](https://apis.io/schemas/rescuegroups-org/rescuegroups-org-animal/)
+- [RescueGroups.org Organization](https://apis.io/schemas/rescuegroups-org/rescuegroups-org-organization/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5)
-- [OpenAPI](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/openapi/rescuegroups-org-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](https://documenter.getpostman.com/view/60615/SWT5j1e4) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-animal-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-schema/rescuegroups-org-organization-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Structure](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-structure/rescuegroups-org-animal-structure.json)
-- [J S O N L D Context](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/json-ld/rescuegroups-org-context.jsonld)
-- [Spectral Rules](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/rules/rescuegroups-org-rules.yml)
-- [Vocabulary](https://raw.githubusercontent.com/api-evangelist/rescuegroups-org/refs/heads/main/vocabulary/rescuegroups-org-vocabulary.yml)
-- [Postman Collection](collections/rescuegroups-org.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/rescuegroups-org.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Data models expressed in JSON Structure.
 
-## Common Properties
+- [Rescuegroups Org Animal Structure](https://apis.io/json-structure/rescuegroups-org/rescuegroups-org-animal-structure/)
 
-- [LinkedIn](https://www.linkedin.com/company/rescuegroups-org)
+#### JSON-LD (1)
+
+Linked-data contexts for the provider's vocabulary.
+
+- [Rescuegroups Org Context](https://apis.io/jsonld/rescuegroups-org/rescuegroups-org-context/)
+
+#### Vocabulary (1)
+
+The provider's domain terms, defined.
+
+- [RescueGroups.org API Vocabulary](https://apis.io/vocabularies/rescuegroups-org/rescuegroups-org-vocabulary/)
+
+#### Examples (1)
+
+Example requests and responses.
+
+- [Rescuegroups Org Search Animals Example](https://apis.io/examples/rescuegroups-org/rescuegroups-org-search-animals-example/)
+
+#### Collections (9)
+
+Postman and Open Collection request collections.
+
+- [RescueGroups.org API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org/)
+- [RescueGroups.org Animals API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-animals-api/)
+- [RescueGroups.org Animals Authentication API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-authentication-api/)
+- [RescueGroups.org Animals Breeds API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-breeds-api/)
+- [RescueGroups.org Animals Colors API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-colors-api/)
+- [RescueGroups.org Animals Organizations API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-organizations-api/)
+- [RescueGroups.org Animals Patterns API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-patterns-api/)
+- [RescueGroups.org Animals Pet Lists API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-pet-lists-api/)
+- [RescueGroups.org Animals Species API](https://apis.io/collections/rescuegroups-org/open-rescuegroups-org-species-api/)
+
+#### Governance rules (2)
+
+Spectral rulesets for the provider's contracts.
+
+- [RescueGroups.org — jsonschema rules](https://apis.io/rules/rescuegroups-org/rescuegroups-org-jsonschema-spectral-rules/)
+- [RescueGroups.org API Rules](https://apis.io/rules/rescuegroups-org/rescuegroups-org-rules/)
+
+#### Security (2)
+
+Authentication, trust centre, and vulnerability disclosure.
+
+- [Rescuegroups Org Authentication](https://apis.io/security/rescuegroups-org/rescuegroups-org-authentication/)
+- [Rescuegroups Org Domain Security](https://apis.io/security/rescuegroups-org/rescuegroups-org-domain-security/)
+
+#### Plans and pricing (1)
+
+Published plans, tiers and prices.
+
+- [Rescuegroups Org Plans Pricing](https://apis.io/plans/rescuegroups-org/rescuegroups-org-plans-pricing/)
+
+#### Rate limits (1)
+
+Published request limits.
+
+- [Rescuegroups Org Rate Limits](https://apis.io/rate-limits/rescuegroups-org/rescuegroups-org-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Rescuegroups Org Finops](https://apis.io/finops/rescuegroups-org/rescuegroups-org-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://rescuegroups.org/)
 - [Documentation](https://userguide.rescuegroups.org/spaces/APIDG/pages/8192120/API+Developers+Guide+Home)
-- [Postman Collection](https://documenter.getpostman.com/view/60615/SWT5j1e4) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Community Forum](https://groups.google.com/a/rescuegroups.org/g/apidev)
-- [Authentication](https://userguide.rescuegroups.org/spaces/APIDG/pages/24053254/v5)
-- [About](https://rescuegroups.org/about/)
+- [Blog](https://rescuegroups.org/feed/)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 32.3** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 57.1 |
+| Contract quality | 63.5 |
+| Contract governance | 23.5 |
+| Operational transparency | 7.9 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 7.9 |
+
+**Agent readiness 17.9** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | — |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | — |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | — |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/rescuegroups-org/](https://apis.io/providers/rescuegroups-org/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for RescueGroups.org: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/rescuegroups-org/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
